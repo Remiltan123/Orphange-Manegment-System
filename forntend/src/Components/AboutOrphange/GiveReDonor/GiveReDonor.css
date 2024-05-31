@@ -1,0 +1,92 @@
+.GiveReDonor-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    
+}
+.GiveReDonor{
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(75, 75, 215, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+   padding: 20px;
+   border-radius: 15px;
+   border: 1.5px solid greenyellow;
+   /*background-color: beige;*/
+   background-color: white; 
+   margin-top: 50px;
+   width: 500px;
+   margin-bottom: 50px;
+}
+.sub-GiveReDono-container{
+   margin: 30px 30px;
+}
+
+.sub-GiveReDono-container tr{
+    font-weight: 700;
+    font-size: 16px;
+ }
+ .sub-GiveReDono-container select{
+    padding: 2px;
+    background-color: rgb(245, 243, 243);
+ }
+
+ .sub-GiveReDono-container input,select {
+    margin-bottom: 15px;
+    margin-left: 10px; 
+    width: 250px;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .sub-GiveReDono-container input[placeholder='Add Description'] {
+    height: 50px;
+    overflow: hidden;
+    font-size: 16px;
+   
+  }
+
+  .sub-GiveReDono-container button{
+    padding: 5px 10px ;
+    width: 200px;
+    text-align: center;
+    margin-left: 130px;
+    background-color: greenyellow;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+ 
+  .give-requst{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+    margin-top: -20px ;
+    margin-left: -20px;
+    margin-right: -20px;
+    height: 20px;
+    padding: 15px ;
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px;
+}
+.option1{
+    color: #555;
+    font-weight: 200;
+}
+option{
+    color: black;
+}
+.sub-GiveReDono-container option:hover{
+    color: black;
+}
+
+.Orphangename{
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+}
+ 

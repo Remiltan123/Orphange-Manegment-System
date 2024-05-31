@@ -1,0 +1,19 @@
+.MoreaboutOnechild_details{
+    background-color: rgb(215, 215, 244);
+    position: relative;
+    margin-top: 70px;
+}
+.MoreaboutOnechild_image{
+    border-radius: 100%;
+    background-color: palevioletred;
+    border: 3px solid rgb(13, 13, 212);
+    width:110px ;
+    height: 110px;
+    position: absolute;
+    left: 600px;
+    top:-50px
+}
+.MoreaboutOnechild_image img{
+    width:110px ;
+    height: 110px;
+}

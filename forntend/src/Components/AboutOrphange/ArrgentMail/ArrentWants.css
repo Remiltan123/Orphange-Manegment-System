@@ -1,0 +1,132 @@
+
+.ArrentWants-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+.ArrentWants-form h1{
+    padding: 8px 0px;
+}
+.AppPasswoeds{
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-right: 30px; 
+}
+.para{
+    width: 600px;
+    color: #555;
+    font-size: 17px;
+}
+.para span{
+    font-weight: bold;
+}
+.AppPasswoeds td{
+    font-size: 18px;
+    font-weight: 600;
+}
+.ArrentWants-container-body input,textarea{
+    width: 500px;
+    padding: 10px 0px;
+}
+.AppPasswoeds input{
+    width: 250px;
+}
+.referhere{
+    display: flex;
+    gap: 5px;
+}
+.referhere p{
+    margin-top: -10px;
+}
+.referhere a{
+    margin-top: -10px;
+    color: red;
+}
+
+.otherAboutmail{
+    margin-left: 40px;
+    margin-top: 10px;
+    margin-right: 20px;
+    background-color: #d6d2d2;
+    margin-top: -1px;
+    padding: 10px 30px;
+}
+.otherAboutmail input,textarea{
+    margin-top: 10px;
+    padding: 10px 0px;
+}
+.upload_image{
+    height: 100px;
+}
+.attachment p{
+   font-weight: 600;
+   font-style: italic;
+}
+.otherAboutmail td{
+    font-weight: 600;
+}
+.ArrentWants-button{
+    background-color: greenyellow;
+    border: none;
+    width: 150px;
+    margin-bottom: 20px;
+    padding: 7px 10px;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 200px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.otherAboutmail div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.otherAboutmail div label{
+    font-weight: 600;
+    margin-top: 5px;
+    width: 50px;
+}
+.otherAboutmail div input,textarea{
+    margin-top: -1px;
+}
+
+.Striteline{
+    display: flex;
+    margin-left: 40px;
+    font-size: 17px;
+}
+.div1,.div2{
+    padding: 20px 70px;
+    border-bottom: 1px solid #555;
+    cursor: pointer;
+}
+.div1{
+    border-top: 6px solid rgb(246, 160, 1);
+    font-weight: bold;
+    font-style: oblique;
+    background-color: #d6d2d2;
+    opacity: 2;
+}
+.div2{
+    border-top: 5px solid rgb(147, 146, 146);
+    background-color: rgb(253, 249, 249);
+    opacity: 0.5;
+    
+}
+
+
+.Aboutpage{
+    margin-left: 40px;
+    margin-top: 10px;
+    background-color: #d6d2d2;
+    margin-top: -1px;
+    padding: 10px 20px;
+    width: 520px;
+}

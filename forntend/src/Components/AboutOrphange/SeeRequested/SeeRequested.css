@@ -1,0 +1,60 @@
+
+.SeeRequested-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.SeeRequested-sub-container{
+    width: 80%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+.SeeRequested-heading{
+    text-align: center;
+    color: black;
+}
+
+
+.SeeRequested-table-Details {
+    border-collapse: collapse;
+    
+}
+.SeeRequested-table-Details thead tr{
+    background-color: greenyellow;
+    text-align: center;
+    font-weight: bold; 
+}
+
+.SeeRequested-table-Details th{
+    padding: 15px 15px;
+    font-size: 20px;
+    border: 1px solid #555;
+    cursor: pointer;
+    
+}
+
+
+.SeeRequested-table-Details td{
+    padding: 8px 15px;
+    
+    border: 1px solid #555;
+    font-weight: 550;
+    cursor: pointer;
+}
+.SeeRequested-table-Details tr:hover{
+    background-color: #cac5c5;
+  }
+.Dropbutton{
+    background-color: blue;
+    padding: 2px 10px ;
+    margin-left: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+.Dropbutton:hover{
+    background-color: red;
+}

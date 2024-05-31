@@ -1,0 +1,148 @@
+.ArgentRequset-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    
+}
+.ArgentRequset{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.sub-ArgentRequset-container{
+   margin: 30px 0px;
+   background-color: #d6d2d2;
+   margin-left: -40px;
+   padding: 20px 20px;
+   margin-top: -1px;
+   padding: 20px 20px;
+}
+
+.sub-ArgentRequset-container tr{
+    font-weight: 700;
+    font-size: 16px;
+ }
+ .sub-ArgentRequset-container select{
+    padding: 2px;
+    background-color: rgb(245, 243, 243);
+ }
+
+ .sub-ArgentRequset-container input {
+    margin-bottom: 15px;
+    margin-left: 10px; 
+    width: 250px;
+    outline: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  .sub-ArgentRequset-container textarea{
+    margin-top: 10px;
+    padding: 0px px;
+    padding-top: 20px;
+    margin-left: 10px;
+  }
+ 
+  .sub-ArgentRequset-container input[placeholder='Add Description'] {
+    height: 50px;
+    overflow: hidden;
+    font-size: 16px;
+   
+  }
+
+  .sub-ArgentRequset-container button{
+    padding: 10px 10px ;
+    width: 200px;
+    text-align: center;
+    margin-left: 130px;
+    background-color: greenyellow;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 40px;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 220px;
+  }
+ 
+  .give-requst{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+    margin-top: -20px ;
+    margin-left: -20px;
+    margin-right: -20px;
+    height: 20px;
+    padding: 15px ;
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px;
+}
+.option1{
+    color: #555;
+    font-weight: 200;
+}
+option{
+    color: black;
+}
+.sub-ArgentRequset-container option:hover{
+    color: black;
+}
+
+.Orphangename{
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+}
+.image-attachment{
+    margin-top: 20px;
+    gap:10px;
+    display: flex;
+    text-align: center;
+}
+.image-attachment p{
+ font-weight: 600;
+}
+.upload-image{
+    height: 100px;
+}
+
+.ArgentRequset-Striteline{
+  display: flex;
+  font-size: 17px;
+  margin-left: -40px;
+  text-align: center;
+}
+
+.clz2,.clz4{
+  padding: 20px 30px;
+  cursor: pointer;
+}
+.clz3{
+  border-top: 6px solid rgb(246, 160, 1);
+  font-weight: bold;
+  font-style: oblique;
+  background-color: #d6d2d2;
+  border-bottom: 1px solid #555;
+  opacity: 2;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clz4{
+  border-top: 5px solid rgb(147, 146, 146);
+  background-color: rgb(253, 249, 249);
+  opacity: 0.5;
+  width: 300px;
+}
+
+.ArgentRequset-Aboutpage{
+  width: 650px;
+  background-color: #d6d2d2;
+  margin-left: -40px;
+  padding: 30px 30px;
+}

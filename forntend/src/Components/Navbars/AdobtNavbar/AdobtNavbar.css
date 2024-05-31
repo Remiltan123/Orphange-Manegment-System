@@ -1,0 +1,55 @@
+.AdoptNavbar-navber-header{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: rgb(239, 188, 95);
+    padding: 3px 0px;
+    height: 80px;
+    
+}
+
+.homeimage{
+    width: 50px;
+    height: 50px;
+    margin-top: 12px;
+    cursor: pointer;
+    margin-right: 100px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.homeimage p{
+    font-size: 18px;
+    color: red;
+    font-weight: 600;
+}
+.homeimage p:hover{
+    color: blue
+}
+.homeimage img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.AdoptNavbar-logo{
+    width: 60px;
+    height: 65px;
+    border-radius: 100%;
+}
+.AdoptNavbar-logo-setup h2{
+    color:blue;
+}
+.AdoptNavbar-logo-setup{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    margin-right: 100px;
+    width: fit-content;
+    margin-left: 20px;
+}
+
+
+

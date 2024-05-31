@@ -1,0 +1,38 @@
+
+.History-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.History-sub-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.History-heading{
+    text-align: center;
+    color: black;
+}
+
+
+.History-table-Details {
+    border-collapse: collapse;
+}
+.History-table-Details thead tr{
+    background-color: greenyellow;
+    text-align: center;
+    font-weight: bold; 
+}
+
+.History-table-Details th{
+    padding: 15px 15px;
+    font-size: 20px;
+    border: 1px solid #555;
+}
+
+.History-table-Details td{
+    padding: 0px 15px;
+    border: 1px solid #555;
+    background-color: #dcfaf4;
+    font-weight: 550;
+}

@@ -1,0 +1,82 @@
+.main-navbar{
+    display: flex;
+    
+}
+.navber-header{
+    display: flex;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: rgb(239, 188, 95);
+    padding: 3px 0px;
+    height: 80px;
+    width: 300vb;
+    position: relative;
+}
+.mid-nav{
+    background-color: rgba(26, 234, 190, 0.7);;
+    border-radius: 5px;
+    position: absolute;
+    right: 0px;
+    align-items: center;
+    top: 62px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 40px;
+    opacity: 1;
+    transition: margin-top 2s ease; 
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.logo{
+    width: 60px;
+    height: 65px;
+    border-radius: 100%;
+}
+.logo-setup h2{
+    color:blue;
+}
+.logo-setup{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    margin-right: 100px;
+    width: fit-content;
+}
+.mid-nav tr{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 10px;   
+}
+.mid-nav tr div{
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px 10px;
+}
+.mid-nav tr div:hover{
+    background-color: red;
+}
+
+
+.Login{
+    background-color: aqua;
+    border-radius: 20px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left: 300px;
+   
+}
+.Login p{
+    font-size: 20px;
+    font-weight: bold;
+    
+}

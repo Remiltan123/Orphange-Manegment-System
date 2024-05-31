@@ -1,0 +1,151 @@
+.q-and-a{
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    
+}
+.Addmorechild-qusetion{
+    display: flex;
+    align-items: center;
+    background-color: #bebcbc;
+    padding: 10px 10px;
+    padding-left: 30px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600 ;
+    height: 35px;
+   
+    
+}
+.Addmorechild-qusetion-image{
+    width: 35px;
+    height: 35px;
+    background-color: blueviolet;
+    border-radius: 100%;
+    margin: 15px;
+}
+.Addmorechild-qusetion p{
+    font-size: 19px;
+}
+
+.Addmorechild-qusetion img{
+    width: 30px;
+    height: 30px;
+   padding-left: 4px;
+   padding-top: 2px;
+}
+.Addmorechild-answer{
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    background-color: #f7f7f7;
+    
+
+}
+
+.Addmorechild-description{
+    display: flex;
+    flex-direction: column;
+}
+.Addmorechild-description div{
+   color: black;
+   font-size: 17PX;
+}
+.Addmorechild-description input{
+    width: 70%;
+    height: 50px;
+    outline: none;
+    background-color:  #f7f7f7;
+    margin-top: -5px;
+}
+.add-compatitions{
+    margin-left: -3px;
+}
+.map-detilas{
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.Addmorechild-compatition-input {
+    display: flex; 
+     
+}
+.Addmorechild-compatition-input input,.diseases input{
+    background-color: #faecec;
+    height: 20px;
+    margin-top: 15px;
+    gap: 10px;
+    outline: none;
+}
+.Addcertificate-button{
+    background-color: #07a138;
+    padding: 5px 10px;
+    width: 125px;
+    font-size: 16;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.add-compatitions button, .Add-Diseases button{
+    background-color: #07a138;
+    border:none ;
+    padding: 2px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.Remove-button{
+    background-color: blue;
+    padding: 5px 10px;
+    width: 125px;
+    font-size: 16;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+
+
+
+
+.get_MedicalCondition{
+    margin-left: 30px ;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    
+}
+.Add-Diseases{
+    display: flex;
+    gap: 5px;
+    margin-left: 30px;
+}
+.Add-Diseases button{
+    height: 20px;
+    margin-top: 15px;
+}
+
+
+
+.diseases{
+    display: flex;
+}
+.certificates{
+    margin-left: 30px;
+}
+.alt{
+    display: flex;
+}
+
+
+
+
+.getdetails{
+    display: flex;
+    margin-left: 30px;
+    gap: 5px;
+}
+.getdetails input{
+    height: 20px;
+    margin-top: 15px;
+    outline: none;
+   
+}

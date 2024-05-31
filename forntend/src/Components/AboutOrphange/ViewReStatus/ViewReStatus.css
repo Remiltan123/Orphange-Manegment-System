@@ -1,0 +1,65 @@
+body{
+    position: relative;
+}
+.View_ReDetails-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.View_ReDetails-sub-container{
+    width: 80%;
+}
+.View_ReDetails-heading{
+    text-align: center;
+    color: black;
+}
+
+
+.View_ReDetails-table-Details {
+    border-collapse: collapse;
+    
+}
+.View_ReDetails-table-Details thead tr{
+    background-color: greenyellow;
+    text-align: center;
+    font-weight: bold; 
+}
+
+.View_ReDetails-table-Details th{
+    padding: 15px 15px;
+    font-size: 20px;
+    border: 1px solid #555;
+    
+}
+
+.View_ReDetails-table-Details td{
+    padding: 8px 15px;
+    
+    border: 1px solid #555;
+    background-color:  rgb(223, 250, 250);;
+    font-weight: 550;
+}
+
+.Clickhere{
+    color: red;
+}
+.Clickhere-td :hover{
+    background-color: rgb(134, 134, 219);
+}
+
+.About-Feedback{
+    position: absolute;
+    top: 130px;
+    left: 400px;
+   
+}
+
+.Clickhere-td button{
+    background-color: #cbcdcb;
+    border: none;
+    padding: 3px 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+}

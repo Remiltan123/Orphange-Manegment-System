@@ -1,0 +1,142 @@
+.App1 {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .project-card {
+    display: flex; /* Display as flex container */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container-image {
+    width: 200px; /* Adjust width of the image container as needed */
+    border-radius: 5px 0 0 5px;
+    overflow: hidden;
+  }
+
+  .H1tag,.Spantag{
+    text-align: center;
+  }
+  .Spantag{
+    margin-top: -10px;
+    margin-bottom: 30px;
+  }
+  
+  .container-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .project-details {
+    flex: 1; /* Allow project details to expand */
+    padding: 20px;
+    margin-left: 10px;
+  }
+  
+  .project-details p {
+    margin: 0;
+    font-weight: 200;
+    font-weight: lighter;
+    color: rgb(29, 29, 29);
+  }
+  
+  .project-card h2 {
+    margin-top: 0;
+  }
+  
+  .progress-bar {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    background-color: #f2f2f2;
+    border-radius: 0 0 5px 5px;
+    height: 20px;
+    margin-top: 10px;
+  }
+  
+  .progress {
+    height: 100%;
+    border-radius: 0 0 5px 5px;
+  }
+  
+  .donate-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px;
+    margin-top: -50px;
+  }
+  
+  .donate-section input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .donate-section button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .donate-section button:hover {
+    background-color: #e68a00;
+  }
+
+  .RGAmount{
+    margin-top: 30px;
+  }
+  .Mainprogress{
+    display: flex;
+    gap: 70px;
+  }
+
+  .Detilas-orphange{
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+  }
+
+  .Detilas-orphange span{
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .load-more {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .load-more button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .load-more button:hover {
+    background-color: #45a049;
+  }
+  

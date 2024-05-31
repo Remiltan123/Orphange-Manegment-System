@@ -1,0 +1,103 @@
+.main-continer{
+    display: flex;
+    justify-content: center;
+}
+
+.Doner-container{
+    width: 430px;
+    height: 75vh;
+    border-radius: 15px;
+    margin-top: 40px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border: 1.5px solid greenyellow;
+}
+.Doner-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+    margin-top: -20px;
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px;
+    height: 50px;
+    padding: 21px ;
+    gap: 10px;
+    
+}
+.Doner-header-image{
+    border-radius: 100%;
+    margin-left: -40px;
+    width: 60px;
+    height: 60px;
+    background-color: blueviolet;
+}
+.Doner-header img{
+    width: 60px;
+    height: 60px;
+   
+}
+.Doner-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+.Doner-body-input{
+   width: 50%;
+   padding: 10px 10px;
+   outline: none;
+   border-radius: 20px;
+   border: none;
+   background-color: rgb(221, 240, 240)
+}
+.Doner-body-button{
+    width: 54%;
+    padding: 10px 0px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: greenyellow;
+    font-size: 16px;
+    font-weight:600;
+ }
+ .Donor-signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+ }
+ .Donor-signup h3{
+    color: blue;
+    font-weight: bold;
+    margin-top: -5px;
+    cursor: pointer;
+ }
+ .Donor-signup h3:hover {
+    color:red;
+}
+ 
+.login-here{
+    margin-top: 20px;
+    margin-left: 100px;
+}
+.login-here p span{
+   color: red;
+   cursor: pointer;
+}
+.login-checkbox p input{
+   margin-right: 10px;
+}
+.login-checkbox{
+    max-width: 300px;
+    overflow: hidden;
+    margin-left: 60px;
+    
+}
+.forgot-password{
+    color: red;
+    margin-left: -100px;
+    margin-top: -5px;
+    cursor: pointer;
+}

@@ -1,0 +1,206 @@
+.Donetion-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.leftbox, .box {
+  width: 50%;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.leftbox{
+  width: 30%;
+ margin-left: 60px;
+}
+.box{
+  margin-right: 80px;
+  
+}
+
+.leftbox-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.Donetion-project-image {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+  margin-top: 20px;
+}
+
+.DonationForm-project-details {
+  flex: 1;
+  margin-left: 100px;
+}
+
+.DonationForm-project-details p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.DonationForm-project-details input {
+  margin: 10px 0;
+  padding: 8px;
+  width: 50%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.donation-type {
+  display: flex;
+  gap: 10px;
+  margin-left: -10px;
+}
+
+.donation-type label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.text1, .text2 {
+  margin: 10px 0;
+  color: #555;
+}
+
+.Donetion-image-container {
+  text-align: center;
+  margin: 20px 0;
+  height: 200px;
+}
+
+.Donetion-image-container img {
+  width: 100px;
+  height: 200px;
+}
+
+.inputbox, .inputs {
+  margin: 10px ;
+  margin-right: 10px;
+  
+}
+.DonetionImg{
+  display: flex;
+  justify-content: center;
+  border: 1px solid olivedrab;
+}
+.DonetionImg img{
+  width: 200px;
+  height: 200px;
+}
+
+.inputbox input, .inputs input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.optional-donation input{
+  width: 10%;
+}
+.submit {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.submit button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit button:hover {
+  background-color: #0056b3;
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.captcha-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.login-link, .link {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.login-link:hover, .link:hover {
+  text-decoration: underline;
+}
+
+.line {
+  height: 2px;
+  width: 100%;
+  background-color: black;
+  margin: 20px 0;
+}
+
+.optional-donation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.total{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  opacity: 0.7;
+
+}
+.total-2{
+  margin-top: -15px;
+  opacity: 0.7;
+}
+.Thankimg{
+  width: 100px;
+  height: 100px;
+  opacity: 2;
+}
+.Amount-Total{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: -10px;
+}
+

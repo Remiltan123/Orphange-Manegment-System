@@ -1,0 +1,85 @@
+.AllOrphanages-main-continer{
+    display: flex;
+    justify-content: center;
+}
+
+.AllOrphanages-Admin-container{
+    width: 430px;
+    height: 75vh;
+    border-radius: 15px;
+    margin-top: 40px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border: 1.5px solid greenyellow;
+}
+.AllOrphanages-Admin-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+    margin-top: -20px;
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px;
+    height: 50px;
+    padding: 20px;
+    gap: 15px;
+}
+.AllOrphanages-Admin-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.AllOrphanages-Admin-body-button{
+    width: 70%;
+    padding: 10px 0px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: greenyellow;
+    font-size: 16px;
+    font-weight:600;
+ }
+
+ #orphange, #district{
+    width: 70%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    font-weight: 300;
+    font-size: 15px;
+ }
+ #orphange{
+  margin-top: -80px;
+ }
+ .AllOrphanages-option-ChooseOrphanage{
+    color: #555;
+    font-weight: 200;
+ }
+ 
+  #orphange option {
+    color: blue;
+    font-weight: 600;
+  }
+  #district option {
+    color: blue;
+    font-weight: 600;
+  }
+  
+  option:hover {
+    background-color: blue; /* Change background color to blue on hover */
+  }
+  .Admin-header-image{
+    border-radius: 100%;
+    margin-left: -40px;
+    width: 60px;
+    height: 60px;
+    background-color: blueviolet;
+  }
+  .Admin-header-image img{
+    width: 60px;
+    height: 60px;
+  }
+  

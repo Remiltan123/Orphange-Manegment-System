@@ -1,0 +1,74 @@
+.ViewChild-main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.ViewChild-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.ViewChild-heading{
+    background-color: greenyellow;
+    padding: 0px 100px;
+}
+.ViewChild-body{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid greenyellow;
+}
+.ViewChild-table{
+    background-color: rgb(223, 250, 250);
+    margin: 20px 40px; 
+}
+
+.tbl{
+    width: 100%;
+    border-collapse: collapse;
+}
+.tbl thead{
+    background-color: #424242;
+    color: white;
+}
+.tbl thead tr th{
+    border: 1px solid #aab7b8;
+    padding: 10px 1px;
+}
+.tbl tbody tr td{
+    text-align: center;
+    border: 1px solid #aab7b8;
+    padding: 3px 1px;
+}
+.tbl tbody tr:hover{
+    background: red;
+    cursor: pointer;
+}
+
+
+.update-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.update-details input{
+    height: 20px;
+    outline: none;
+    margin-top: 5px;
+}
+.Viewchild-button{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.Viewchild-button button{
+    border: none;
+    cursor: pointer;
+    background-color: greenyellow;
+    padding: 3px 11px;
+    font-size: 16px;
+}

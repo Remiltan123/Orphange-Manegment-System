@@ -1,0 +1,81 @@
+.Feedback-container{
+    display: flex;
+    justify-content: center;
+    height: 88vh;
+
+    
+}
+.Feedback{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+   padding: 20px;
+   border-radius: 15px;
+   border: 1.5px solid greenyellow;
+   /*background-color: beige;*/
+   background-color: white; 
+   margin-top: 50px;
+   width: 500px;
+   margin-bottom: 50px;
+}
+.sub-Feedback-container{
+   margin-top: 30px ;
+   margin-left: 50px;
+}
+
+.sub-Feedback-container tr{
+    font-weight: 700;
+    font-size: 17px;
+ }
+ 
+
+ .sub-Feedback-container input {
+    margin-bottom: 15px;
+    margin-left: 10px; 
+    width: 250px;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+
+ 
+ 
+  .give-feedback{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+    margin-top: -20px ;
+    margin-left: -20px;
+    margin-right: -20px;
+    height: 20px;
+    padding: 15px ;
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+.buttons{
+  display: flex;
+  gap: -10px;
+  justify-content: center;
+}
+.close-button{
+  background-color: rgb(224, 110, 110);
+}
+.Submit-button{
+  background-color: greenyellow;
+}
+.Submit-button, .close-button{
+  padding: 5px 10px ;
+  width: 100px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+
+}
+
+ 

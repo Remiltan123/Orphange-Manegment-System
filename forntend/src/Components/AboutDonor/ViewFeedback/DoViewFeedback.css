@@ -1,0 +1,40 @@
+
+.DoViewFeedback-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.DoViewFeedback-sub-container{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.DoViewFeedback-heading{
+  text-align: center;
+  color: black;
+  
+}
+
+
+.DoViewFeedback-table-Details {
+  border-collapse: collapse;
+}
+.DoViewFeedback-table-Details thead tr{
+  background-color: greenyellow;
+  text-align: center;
+  font-weight: bold; 
+}
+
+.DoViewFeedback-table-Details th{
+  padding: 15px 15px;
+  font-size: 20px;
+  border: 1px solid #555;
+}
+
+.DoViewFeedback-table-Details td{
+  padding: 8px 15px;
+  border: 1px solid #555;
+  font-weight: 550;
+}
+
