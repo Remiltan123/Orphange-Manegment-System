@@ -8,7 +8,6 @@ const AdoptViewChild = () => {
     <div className='AdoptViewChild-maincontainer'>
       <div className='mainHeading'>
         <h2>Adopter see all the childs details in orphanage</h2>
-        <p>Hi</p>
       </div>
       <div className='perticularChild'>
         {renderChildren()}
