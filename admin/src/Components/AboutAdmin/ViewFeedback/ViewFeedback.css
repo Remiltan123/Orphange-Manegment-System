@@ -1,0 +1,36 @@
+
+.Admin-ViewFeedback-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.Admin-ViewFeedback-sub-container{
+    width: 90%;
+}
+.Admin-ViewFeedback-heading{
+    text-align: center;
+    color: black;
+}
+
+
+.Admin-ViewFeedback-table-Details {
+    border-collapse: collapse;
+    margin-left: 230px;
+}
+.Admin-ViewFeedback-table-Details thead tr{
+    background-color: greenyellow;
+    text-align: center;
+    font-weight: bold; 
+}
+
+.Admin-ViewFeedback-table-Details th{
+    padding: 15px 15px;
+    font-size: 20px;
+    border: 1px solid #555;
+}
+
+.Admin-ViewFeedback-table-Details td{
+    padding: 8px 15px;
+    border: 1px solid #555;
+    font-weight: 550;
+}

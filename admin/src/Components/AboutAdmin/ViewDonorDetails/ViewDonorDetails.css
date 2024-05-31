@@ -1,0 +1,35 @@
+
+.Admin-ViewDonor-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.Admin-ViewDonor-sub-container{
+    width: 50%;
+}
+.Admin-ViewDonor-heading{
+    text-align: center;
+    color: black;
+}
+
+
+.Admin-ViewDonor-table-Details {
+    border-collapse: collapse;
+}
+.Admin-ViewDonor-table-Details thead tr{
+    background-color: greenyellow;
+    text-align: center;
+    font-weight: bold; 
+}
+
+.Admin-ViewDonor-table-Details th{
+    padding: 15px 15px;
+    font-size: 20px;
+    border: 1px solid #555;
+}
+
+.Admin-ViewDonor-table-Details td{
+    padding: 8px 15px;
+    border: 1px solid #555;
+    font-weight: 550;
+}
