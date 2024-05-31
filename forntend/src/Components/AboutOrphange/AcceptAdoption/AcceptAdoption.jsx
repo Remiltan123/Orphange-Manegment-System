@@ -9,6 +9,7 @@ export const AcceptAdoption = () => {
       <div className='AcceptAdoption-container'>
         <div className='AcceptAdoption-heading'>
           <h1>ACCEPT ADOPTION REQUEST</h1>
+          <p>Hi </p>
         </div>
 
         <div className='AcceptAdoption-body'>
