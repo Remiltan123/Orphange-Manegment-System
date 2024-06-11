@@ -41,8 +41,8 @@ export const DonorShoe = () => {
     displayAllOrphanages(selectedDistrict);
   }, [selectedDistrict]); // Corrected dependency array
 
-  const handleClick = (orphanage) => {
-    navigate(`/Donor/seeorphange/${token}`, { state: { orphanage } });
+  const handleClick = (Orphanage) => {
+    navigate(`/Donor/seeorphange/${token}`, { state: { Orphanage } });
   };
 
   console.log(token);
