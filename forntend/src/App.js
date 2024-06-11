@@ -34,6 +34,7 @@ import { Forgotpassword } from './Components/AboutDonor/forgotpassword/forgotpas
 import { ResetPassword } from './Components/AboutDonor/ResetPassword/ResetPassword.jsx';
 import { ArrgentAdminpanal } from './Components/AboutOrphange/ArrgentAdminpanal/ArrgentAdminpanal.jsx';
 import { WantsDonetion } from './Components/WantsDonetion/WantsDonetion.js';
+import { OrphanageDetials } from './Pages/OrphanageDetials.jsx';
 
 
 
@@ -77,6 +78,7 @@ function App() {
           <Route path="/forgotpassword" element={<Forgotpassword/>} />
           <Route path="/resetpassword/:token" element={<ResetPassword/>} />
           <Route path='/Donor/ViewDetails/Donetion/:token' element={<><DonorNavbar/> <DonationForm/></>} />
+          <Route path='/Donor/seeorphange/:token' element={<><DonorNavbar/> <OrphanageDetials/></>} />
 
 
         <Route path='/Adopt' element={<AdobtLogin/>}></Route>

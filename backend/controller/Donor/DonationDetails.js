@@ -1,4 +1,5 @@
 const Do_Details = require("../../models/DonorModels/Donetion_Detials");
+const  Do_Request = require("../../models/Donation")
 const NodeRSA = require('node-rsa');
 const jwt = require('jsonwebtoken');
 
@@ -18,6 +19,7 @@ const key_public = new NodeRSA(private_key);
 
 key_public.exportKey("pkcs8-private"); // private
 key_public.exportKey("pkcs8-public");  // public
+
 
 const GivenDonation = async (req, res) => {
     const { Oname, purpose, amount, Do_name, Do_email, card_No, CCV, month } = req.body;
@@ -68,6 +70,16 @@ const GivenDonation = async (req, res) => {
 
         await Do_Detail.save();
         res.json({ success: true, message: "Thank You For Your Donation" });
+
+        //update donetion detilas
+        const Req_id= req.body.Re_id;
+        const response = await  Do_Request.findByIdAndUpdate(Req_id,{$inc:{raised_amount:amount}},{ new: true })
+        if(! response ){
+            res.json({success:false, message:"An error occur while updating amount"})
+        }else{
+            console.log("updated Amount")
+        }
+   
     } catch (err) {
         console.error("Error occurred: " + err);
         res.status(500).json({ success: false, message: "Error occurred while saving the data" });

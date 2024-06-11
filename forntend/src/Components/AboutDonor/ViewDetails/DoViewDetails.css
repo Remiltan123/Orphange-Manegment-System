@@ -125,7 +125,7 @@
     cursor: pointer;
 }
 
-.progress-bar {
+.ViewDetails-progress-bar {
     display: flex;
     align-items: center;
     width: 90%;
@@ -134,8 +134,17 @@
     height: 5px;
     margin-top: -10px;
 }
-.progress {
+.ViewDetails-progress {
     height: 100%;
     border-radius: 0 0 5px 5px;
     text-align: center;
+}
+
+.district-search, .perticular-orphange{
+    display: flex;
+    flex-direction: column;
+}
+.Orphange-sreach{
+    display: flex;
+    gap: 10px;
 }

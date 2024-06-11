@@ -297,10 +297,11 @@ router.get("/Logout",(req,res)=>{
 router.post("/displayOrphange",async(req,res)=>{
     const district = req.body.Odistrict;
     let Allorphanage = await Orphanage.find({Odistrict:district})
+    let CountOrphange = await Orphanage.countDocuments({Odistrict:district})
     if (Allorphanage.length === 0){
         res.json({success:false, message:"No Any Orphange in " + district})
     }else{
-        res.send({success:true , data:Allorphanage}) 
+        res.send({success:true , data:Allorphanage, count:CountOrphange}) 
     }
     
 })
@@ -314,7 +315,7 @@ router.get("/GetArgentWants",async(req,res)=>{
             res.json({success:true,data:response})
         }
     }catch(err){
-        console.err("Error:",err)
+        console.error("Error:",err)
         res.json({success:false,message:"An error occur while Featching data"})
     }
    

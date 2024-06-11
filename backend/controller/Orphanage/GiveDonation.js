@@ -15,16 +15,20 @@ const GiveDonation = async (req, res) => {
             Re_id: id,
             purpose: req.body.purpose,
             expect_amount:req.body.expect_amount,
+            raised_amount:0,
             description: req.body.description
         });
 
+        
         await NewDo_Request.save();
         res.json({
-            success: true
+            success: true,
+            message:"Request added succesfully"
         });
+
     } catch (err) {
         console.error(err); // Log the error
-        res.status(500).json({ errors: "Error occurred while saving the Donation request", err });
+        res.status(500).json({ success: false , message: "Error occurred while saving the Donation request" });
     }
 };
 

@@ -11,9 +11,10 @@ export const ArrentMailSend = () => {
         to: '',
         subject: '',
         text: '',
-        from: ''
+        from: '',
+        attachment: null
     });
-    const[state,Setstate]=useState(true)
+    const [state, setState] = useState(true);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,14 +24,28 @@ export const ArrentMailSend = () => {
         }));
     };
 
+    const handleFileChange = (e) => {
+        setEmail(prevDetails => ({
+            ...prevDetails,
+            attachment: e.target.files[0]
+        }));
+    };
+
     const sendEmail = async () => {
+        const formData = new FormData();
+        formData.append('to', emailDetails.to);
+        formData.append('from', emailDetails.from);
+        formData.append('subject', emailDetails.subject);
+        formData.append('text', emailDetails.text);
+        if (emailDetails.attachment) {
+            formData.append('attachment', emailDetails.attachment);
+        }
+
         const response = await fetch('http://localhost:1010/Sendmail', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(emailDetails),
+            body: formData,
         });
+
         const data = await response.json();
         if (data.success) {
             toast.success(data.message);
@@ -63,26 +78,26 @@ export const ArrentMailSend = () => {
 
     return (
         <>
-                <div className='ArrentWants-main-container'>
-                    <div className='ArrentWants-container'>
-                        <div className='ArrentWants-container-body'>
+            <div className='ArrentWants-main-container'>
+                <div className='ArrentWants-container'>
+                    <div className='ArrentWants-container-body'>
+                        <div className='Striteline'>
+                            <div className={state ? "div1" : "div2"} onClick={() => { setState(true) }}>Send Mail to subscribers</div>
+                            <div className={!state ? "div1" : "div2"} onClick={() => { setState(false) }}>About this page</div>
+                        </div>
 
-                            <div className='Striteline'>
-                                <div className={state == true ? "div1" : "div2"} onClick={()=>{Setstate(true)}}>Send Mail to subdcripers</div>
-                                <div className={!state == true ? "div1" : "div2"} onClick={()=>{Setstate(false)}}>About this page</div>
-                            </div>
-                           
-                            {state && (<div className='otherAboutmail'>
+                        {state && (
+                            <div className='otherAboutmail'>
                                 <div>
                                     <label htmlFor='to'>To:</label>
                                     <input type="text" onChange={handleChange} name='to' value={emailDetails.to} />
                                 </div>
-                                
+
                                 <div>
                                     <label htmlFor='from'>From:</label>
                                     <input type="text" onChange={handleChange} name='from' value={emailDetails.from} />
                                 </div>
-                            
+
                                 <div>
                                     <label htmlFor='subject'>Subject:</label>
                                     <input type="text" onChange={handleChange} name='subject' value={emailDetails.subject} />
@@ -92,26 +107,25 @@ export const ArrentMailSend = () => {
                                     <textarea name="text" onChange={handleChange} value={emailDetails.text}></textarea>
                                 </div>
 
-                                <div className='attachment'>
-                                    <p>Attach if you have any details</p>
-                                    <label htmlFor='file-input'>
-                                        <img src={upload_image} alt='' className='upload_image' />
-                                    </label>
-                                    <input type='file' name='image' id='file-input' hidden />
+                                <div className="Attachment">
+                                    <p>Attachment:</p>
+                                    <div><input type='file' name='attachment' id='file-input' onChange={handleFileChange} /></div>
                                 </div>
+                                
                                 <button className='ArrentWants-button' onClick={sendEmail}>Send mail</button>
-                            </div>)}
+                            </div>
+                        )}
 
-                            {!state && (
-                                <div className='Aboutpage'>
-                                    <div>Well come</div>
-                                    <p>Here If you Have any arggent wants you can sent with email using attach the related document </p>
-                                    <p>For example suppose your want to blood emmergence then tou have to upload related detilas like pdf upload within the uploaded image the you can sent and sup...you want ...acc </p>
-                                </div>
-                            )}
-                        </div>
+                        {!state && (
+                            <div className='Aboutpage'>
+                                <div>Welcome</div>
+                                <p>Here, if you have any urgent needs, you can send them via email with the related document attached.</p>
+                                <p>For example, suppose you need blood urgently. You can upload the related details as a PDF within the uploaded image, then you can send it along with other relevant information.</p>
+                            </div>
+                        )}
                     </div>
                 </div>
+            </div>
         </>
     );
 };

@@ -15,6 +15,7 @@ export const DonationForm = () => {
   const [Donetiondetials, Setdetials] = useState({
     Oname: orphanage?.Oname,
     purpose: request?.purpose,
+    Re_id:request?.Re_id,
     Do_name: "",
     amount: amount,
     Do_email: "",
@@ -60,7 +61,7 @@ console.log(token)
     }
   };
 
-  console.log(Donetiondetials)
+  console.log(request)
 
   return (
     <div className='Donetion-container'>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./GiveReDonor.css"
 import { useParams } from 'react-router-dom';
 import { OrphanageNavbar } from '../../Navbars/OrpanageNavbar/OrphanageNavbar';
+import {toast} from "react-toastify"
 
 
 export const GiveReDonor = () => {
@@ -42,9 +43,9 @@ export const GiveReDonor = () => {
     })
     const data = await responsedata.json();
     if(data.success){
-      alert("request add succesfully")
+      toast.success(data.message)
     }else{
-      alert(data.errors)
+      toast.error(data.message)
     }
   }
 

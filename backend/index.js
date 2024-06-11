@@ -24,11 +24,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const UserRouter = require('./controller/Donor/User')
 app.use("/user",UserRouter)
 
+const SeeDonetionRequset = require("./controller/Donor/Seerequest")
+app.use("/",SeeDonetionRequset)
+
+//Orphange Api
 const ORuserRouter = require('./controller/Orphanage/ORUser')
 app.use("/",ORuserRouter)
 
+//send mail 
+const ORSendmail = require('./controller/Orphanage/Mail')
+app.use("/",ORSendmail )
+
+//Adopter Api
 const AdopterUserRouter = require("./controller/Adopter/Aduser")
 app.use("/", AdopterUserRouter)
+
+
+
+
 
 
 // Connect with homepage
@@ -63,6 +76,81 @@ app.post("/upload", upload.single('image'), (req, res) => {
         image_url: `http://localhost:${port}/images/${req.file.filename}`
     });
 });
+
+
+
+
+
+//select priticular orphange
+app.get("/orphanage/:id", async (req, res) => {
+    let id = parseInt(req.params.id);
+    try {
+        const ReqOrphanage = await Orphanage.findOne({ Oid: id });
+        if (!ReqOrphanage) {
+            return res.status(404).json({ success: false, message: "Orphanage not found" });
+        }
+        res.json(ReqOrphanage);
+    } catch (error) {
+        console.error('Error fetching orphanage:', error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
+
+
+//Remove Orphanage
+app.post("/RemoveOrphanage", async (req, res) => {
+    try {
+        const orphanageId = req.body.id;
+        const deletedOrphanage = await Orphanage.findOneAndDelete({ Oid: orphanageId });
+        if (!deletedOrphanage) {
+            return res.status(404).json({ success: false, message: "Orphanage not found" });
+        }
+        console.log('Removed orphanage with ID:', orphanageId);
+        res.json({ success: true, id: orphanageId });
+    } catch (error) {
+        console.error('Error removing orphanage:', error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
+app.listen(port,(error)=>{
+    if(!error){
+        console.log("App is running on port :" + port)
+    }
+    else{
+        console.log("error")
+    }
+});
+
+
+
+//update the perdicular orphanage
+/*
+app.patch("/Update/:id", async (req, res) => {
+    try {
+        let id = parseInt(req.params.id);
+        let ReqOrphanage = await Orphanage.findOne({ Oid: id });
+
+        if (!ReqOrphanage) {
+            return res.status(404).json({ success: false, message: "Orphanage not found" });
+        }
+
+        Object.assign(ReqOrphanage, req.body);
+        await ReqOrphanage.save();
+
+        console.log('updated');
+        res.json({
+            success: true,
+            name: req.body.Oname
+        });
+    } catch (error) {
+        console.error('Error updating orphanage:', error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+*/
+
 
 /*
 // Creating API for adding an orphanage
@@ -108,74 +196,7 @@ app.post("/addorphanage", async (req, res) => {
 //Display the all orphange endpoint
 
 
-//select priticular orphange
-app.get("/orphanage/:id", async (req, res) => {
-    let id = parseInt(req.params.id);
-    try {
-        const ReqOrphanage = await Orphanage.findOne({ Oid: id });
-        if (!ReqOrphanage) {
-            return res.status(404).json({ success: false, message: "Orphanage not found" });
-        }
-        res.json(ReqOrphanage);
-    } catch (error) {
-        console.error('Error fetching orphanage:', error);
-        res.status(500).json({ success: false, message: "Internal server error" });
-    }
-});
 
-
-
-//Remove Orphanage
-app.post("/RemoveOrphanage", async (req, res) => {
-    try {
-        const orphanageId = req.body.id;
-        const deletedOrphanage = await Orphanage.findOneAndDelete({ Oid: orphanageId });
-        if (!deletedOrphanage) {
-            return res.status(404).json({ success: false, message: "Orphanage not found" });
-        }
-        console.log('Removed orphanage with ID:', orphanageId);
-        res.json({ success: true, id: orphanageId });
-    } catch (error) {
-        console.error('Error removing orphanage:', error);
-        res.status(500).json({ success: false, message: "Internal server error" });
-    }
-});
-
-//update the perdicular orphanage
-/*
-app.patch("/Update/:id", async (req, res) => {
-    try {
-        let id = parseInt(req.params.id);
-        let ReqOrphanage = await Orphanage.findOne({ Oid: id });
-
-        if (!ReqOrphanage) {
-            return res.status(404).json({ success: false, message: "Orphanage not found" });
-        }
-
-        Object.assign(ReqOrphanage, req.body);
-        await ReqOrphanage.save();
-
-        console.log('updated');
-        res.json({
-            success: true,
-            name: req.body.Oname
-        });
-    } catch (error) {
-        console.error('Error updating orphanage:', error);
-        res.status(500).json({ success: false, message: "Internal server error" });
-    }
-});
-*/
-
-
-app.listen(port,(error)=>{
-    if(!error){
-        console.log("App is running on port :" + port)
-    }
-    else{
-        console.log("error")
-    }
-});
 
 
 

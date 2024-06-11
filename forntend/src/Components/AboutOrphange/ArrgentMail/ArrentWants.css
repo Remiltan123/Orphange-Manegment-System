@@ -62,10 +62,7 @@
 .upload_image{
     height: 100px;
 }
-.attachment p{
-   font-weight: 600;
-   font-style: italic;
-}
+
 .otherAboutmail td{
     font-weight: 600;
 }
@@ -103,7 +100,7 @@
     font-size: 17px;
 }
 .div1,.div2{
-    padding: 20px 70px;
+    padding: 20px 71px;
     border-bottom: 1px solid #555;
     cursor: pointer;
 }
@@ -129,4 +126,22 @@
     margin-top: -1px;
     padding: 10px 20px;
     width: 520px;
+}
+
+.Attachment{
+    display: flex;
+    flex-direction: column;
+    gap: -10px;
+    margin-bottom: 10px;
+}
+.Attachment p{
+   
+    font-weight: bold;
+}
+.Attachment div{
+    margin-top: -5px;
+    background-color: white;
+    padding-left: 10px;
+    width: 490px;
+   border: 1px solid #939191;
 }

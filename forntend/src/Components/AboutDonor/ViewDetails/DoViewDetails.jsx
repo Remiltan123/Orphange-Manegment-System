@@ -1,32 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import "./DoViewDetails.css";
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { DonationForm } from '../DonationForm/DonationForm';
-import district from "../../Assets/District"
-import {toast} from "react-toastify"
-import { useNavigate } from 'react-router-dom';
-
+import district from "../../Assets/District";
+import { toast } from "react-toastify";
 
 export const DoViewDetails = () => {
-
   const navigate = useNavigate();
   const { token } = useParams();
-  const [showfrom, setShowfrom] = useState(false);
   const [Requests, setRequests] = useState([]);
+  const [NewRequests, setNewRequests] = useState([]);
   const [OrphanageDetails, setOrphanageDetails] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("Jaffna");
+  const [perticularOr, SetperticularOr] = useState(null);
+  const [state, SetState] = useState("District");
 
-  const [sendRequest, setSendRequest] = useState(null);
+  const handleDistrictWise = () => {
+    fetchRequests(selectedDistrict);
+    displayAllOrphanages(selectedDistrict);
+    SetState("District");
+  };
 
-  const handleclick = (request, orphanageName) => {
-    setShowfrom(!showfrom);
-    setSendRequest({ request, orphanageName });
-  }
-
-  const handleSearchClick  = ()=>{
-    fetchRequests(selectedDistrict)
-  }
+  const HandlePerticular = () => {
+    SetState("Perticular");
+    SelectPerticular(perticularOr);
+  };
 
   const handleClick = (request, orphanage) => {
     navigate(`/Donor/ViewDetails/Donetion/${token}`, { state: { request, orphanage } });
@@ -34,22 +32,22 @@ export const DoViewDetails = () => {
 
   const fetchRequests = async (district) => {
     try {
-      const response = await fetch('http://localhost:1010/AllDonationRequest',{
+      const response = await fetch('http://localhost:1010/DistrictWiswSearch', {
         method: "POST",
         headers: {
           "Content-Type": 'application/json',
         },
-        body:JSON.stringify({  Odistrict: district }),
+        body: JSON.stringify({ Odistrict: district }),
       });
-      
-      const Data = await response.json(); 
-      if(!Data.success){
+
+      const Data = await response.json();
+      if (!Data.success) {
         toast.error(Data.message);
-      }else{
-        setRequests(Data.data)
+      } else {
+        setRequests(Data.data);
         fetchOrphanageDetails(Data.data);
       }
-    
+
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -69,24 +67,89 @@ export const DoViewDetails = () => {
 
   useEffect(() => {
     fetchRequests(selectedDistrict);
+    displayAllOrphanages(selectedDistrict);
   }, []);
 
-  console.log(token)
+  const [DistrictOrphange, SetDistrictOrphange] = useState([]);
+
+  const displayAllOrphanages = async (district) => {
+    try {
+      const response = await fetch('http://localhost:1010/displayOrphange', {
+        method: "POST",
+        headers: {
+          "Content-Type": 'application/json',
+        },
+        body: JSON.stringify({ Odistrict: district }),
+      });
+
+      const Data = await response.json();
+      if (!Data.success) {
+        console.error(Data.message);
+      } else {
+        SetDistrictOrphange(Data.data);
+        console.log(Data.success);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const SelectPerticular = async (Oname) => {
+
+    try {
+      const response = await fetch("http://localhost:1010/SerachPerticularOrphange", {
+        method: "POST",
+        headers: {
+          "Content-Type": 'application/json',
+        },
+        body: JSON.stringify({ Oname: Oname }),
+      });
+
+      const Data = await response.json();
+      if (!Data.success) {
+        toast.error(Data.message);
+      } else {
+        setNewRequests(Data.data);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  console.log(NewRequests)
 
   return (
     <div className='ViewDetails-container'>
       <div className='ViewDetails-sub-container'>
         <div className='heading'><h1>ALL DONATION REQUEST DETAILS</h1></div>
 
-        <div className='serach-heading'><p>Search district wise Orphanages Requestes</p></div>
-          <div className='Serachbar'>
-            <select name="district" id="district"  onChange={(e)=>{ setSelectedDistrict(e.target.value)}}>
-              {district.map((district, index) => (
-                <option value={district} key={index}>{district}</option>
-              ))}
-            </select>
-            <div className='search-icon' onClick={handleSearchClick }>search</div>
+        <div className='Orphange-sreach'>
+          <div className='district-search'>
+            <div className='serach-heading'><p>Search district wise Orphanages Requestes</p></div>
+            <div className='Serachbar'>
+              <select name="district" id="district"  onChange={(e)=>{ setSelectedDistrict(e.target.value)}}>
+                {district.map((district, index) => (
+                  <option value={district} key={index}>{district}</option>
+                ))}
+              </select>
+              <div className='search-icon' onClick={ handleDistrictWise }>search</div>
+            </div>
           </div>
+          
+          <div className='perticular-orphange'>
+            <div className='serach-heading'><p>Search perticular Orphanages Requestes</p></div>
+            <div className='Serachbar'>
+              <select name="district" id="district"  onChange={(e)=>{ setSelectedDistrict(e.target.value)}}>
+                <option value="">Choose Orphanage</option>
+                {DistrictOrphange.map((orphange, index) => (
+                  <option value={orphange.Oname} key={index} onClick={()=>{SetperticularOr(orphange.Oname)}}>{orphange.Oname}</option>
+                ))}
+              </select>
+              <div className='search-icon' onClick={HandlePerticular }>search</div>
+            </div>
+          </div>
+
+        </div>
 
 
         <table className='table-Details'>
@@ -101,7 +164,8 @@ export const DoViewDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {Requests.map((request, index) => (
+            {state === "District" ?
+            Requests.map((request, index) => (
               <tr key={index}>
                 <td style={{ color: "blue", fontWeight: 600 }}>{OrphanageDetails[index]?.Oname}</td>
                 <td style={{ color: "blue", fontWeight: 600 }}>{request.purpose}</td>
@@ -112,8 +176,8 @@ export const DoViewDetails = () => {
                       <strong style={{ opacity: 0.7 }}>Raised:</strong> <span style={{ color: "#ff9900", fontWeight: "bold" }}>${request.expect_amount.toLocaleString()}</span>
                       <strong style={{ opacity: 0.7 }}> Goal:</strong> <span style={{ fontWeight: "bold", color: "green" }}> ${request.expect_amount.toLocaleString()}</span>
                     </p>
-                    <div className="progress-bar">
-                      <div className="progress" style={{ width: `${(request.expect_amount /request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
+                    <div className="ViewDetails-progress-bar">
+                      <div className="ViewDetails-progress" style={{ width: `${(request.expect_amount /request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
                     </div>
                 </td>
                 
@@ -123,7 +187,33 @@ export const DoViewDetails = () => {
                   </div>
                 </td>
               </tr>
-            ))}
+            ))
+
+            :NewRequests.map((request, index) => (
+              <tr key={index}>
+                <td style={{ color: "blue", fontWeight: 600 }}>{OrphanageDetails[index]?.Oname}</td>
+                <td style={{ color: "blue", fontWeight: 600 }}>{request.purpose}</td>
+                <td>{request.description}</td>
+                <td>{request.date}</td>
+                <td className='amount'>
+                    <p>
+                      <strong style={{ opacity: 0.7 }}>Raised:</strong> <span style={{ color: "#ff9900", fontWeight: "bold" }}>${request.expect_amount.toLocaleString()}</span>
+                      <strong style={{ opacity: 0.7 }}> Goal:</strong> <span style={{ fontWeight: "bold", color: "green" }}> ${request.expect_amount.toLocaleString()}</span>
+                    </p>
+                    <div className="ViewDetails-progress-bar">
+                      <div className="ViewDetails-progress" style={{ width: `${(request.expect_amount /request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
+                    </div>
+                </td>
+                
+                <td>
+                  <div className='buttons'>
+                    <button className='Accept-button' onClick={()=>{handleClick(request,OrphanageDetails[index])}} >Accept</button>
+                  </div>
+                </td>
+              </tr>
+            ))
+          
+          }
           </tbody>
         </table>
       </div>

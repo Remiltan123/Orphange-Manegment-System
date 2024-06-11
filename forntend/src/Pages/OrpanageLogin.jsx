@@ -69,6 +69,7 @@ export const OrpanageLogin = () => {
         </div>
 
         <div className='Login-Admin-body'>
+        
           <input type="text" placeholder={orphanage.Oname} className='Login-Admin-body-input-1' name='' />
 
           <input type="text" placeholder='email' className='Login-Admin-body-input' name='Omail' onChange={ChangeHandle}/>

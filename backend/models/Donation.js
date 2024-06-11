@@ -17,6 +17,9 @@ const Do_Request = mongoose.model("Do_Request",{
     expect_amount:{
         type:Number,
     },
+    raised_amount:{
+        type:Number,
+    },
     description:{
         type:String,
     },

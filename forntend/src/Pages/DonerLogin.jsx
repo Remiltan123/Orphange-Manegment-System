@@ -93,7 +93,7 @@ export const DonerLogin = () => {
 
           <input type="text" placeholder='Email' className='Doner-body-input' name='email' value={formdata.email} onChange={ChangeHandle} />
 
-           <input type="text" placeholder='Password' className='Doner-body-input' name='password' value={formdata.password} onChange={ChangeHandle} />
+           <input type="password" placeholder='Password' className='Doner-body-input' name='password' value={formdata.password} onChange={ChangeHandle} />
 
           {state==="Login"? <Link to="/forgotpassword" style={{textDecoration:"none", color: "red"}}><div className='forgot-password'>Forgot password?</div></Link> : <></>}
           <button className='Doner-body-button' onClick={()=>{state==="Login"?handleLogin() :handleSignup()}}> Continue</button>

@@ -1,7 +1,10 @@
 const Do_Request = require("../../models/Donation")
 const Orphanage = require("../../models/Orphanage")
+const express = require("express")
+const router = express.Router()
+const path = require("path");
 
-const AllDonationRequest = async (req,res)=>{
+router.post("/DistrictWiswSearch", async(req,res)=>{
     try{
         const district = req.body.Odistrict;
         const findorphange = await Orphanage.find({ Odistrict:district}) 
@@ -18,6 +21,31 @@ const AllDonationRequest = async (req,res)=>{
         res.json({ success: false, message: "An error occurred while fetching donation requests." });
     }
    
-}
+})
 
-module.exports = AllDonationRequest
+router.post("/SerachPerticularOrphange",async(req,res)=>{
+    try{
+        const Oname = req.body.Oname;
+        const Orphage = await Orphanage.findOne({Oname:Oname})
+        if(!Orphage){
+            res.json({success:false, message:"An error occur. Please try agian"})
+        }else{
+            const Request = await Do_Request.find({Or_id:Orphage.Oid})
+            if(Request.length===0){
+                res.json({success:false, message:"Not Found Requested Within " +Oname }) 
+            }else{
+                res.json({
+                    success:true,
+                    data:Request,
+                })
+            }
+        }
+
+    }catch(err){
+        console.error("Error"+ err)
+        res.json({succes:false ,message:err})
+    }
+    
+})
+
+module.exports = router
