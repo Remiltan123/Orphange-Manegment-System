@@ -5,18 +5,18 @@ import district from "../Components/Assets/District";
 import { toast } from "react-toastify";
 import "./CSS/Donorshow.css";
 import { useNavigate, useParams } from 'react-router-dom';
+import Chart from 'chart.js/auto';
 
 export const DonorShoe = () => {
-
-  const navigate = useNavigate(); // Correct capitalization
-  const { token } = useParams(); // Destructure to get the token directly
+  const navigate = useNavigate();
+  const { token } = useParams();
   const [selectedDistrict, setSelectedDistrict] = useState("Jaffna");
-  const [DistrictOrphanage, SetDistrictOrphanage] = useState([]);
+  const [districtOrphanage, setDistrictOrphanage] = useState([]);
   const [count, setCount] = useState();
 
   const displayAllOrphanages = async (district) => {
     try {
-      const response = await fetch('http://localhost:1010/displayOrphange', {
+      const response = await fetch('http://localhost:1010/OrphangeAnalayisis', {
         method: "POST",
         headers: {
           "Content-Type": 'application/json',
@@ -28,9 +28,11 @@ export const DonorShoe = () => {
       if (!data.success) {
         toast.error(data.message);
       } else {
-        SetDistrictOrphanage(data.data);
+        setDistrictOrphanage(data.data);
         setCount(data.count);
-        console.log(data.success);
+
+        // Render the bar chart after receiving data
+        renderBarChart(data.data);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -39,19 +41,87 @@ export const DonorShoe = () => {
 
   useEffect(() => {
     displayAllOrphanages(selectedDistrict);
-  }, [selectedDistrict]); // Corrected dependency array
+  }, [selectedDistrict]);
 
-  const handleClick = (orphanage) => {
-    navigate(`/Donor/seeorphange/${token}`, { state: { orphanage } });
+  const handleClick = (Orphanage) => {
+    navigate(`/Donor/seeorphange/${token}`, { state: { Orphanage } });
   };
 
-  console.log(token);
+  // Function to render the bar chart
+  // Function to render the bar chart
+const renderBarChart = (data) => {
+  const ctx = document.getElementById('barChart');
+  const labels = [];
+  const datasets = [];
+
+  // Iterate over each orphanage
+  data.forEach(orphanage => {
+    const orphanageName = orphanage.orphanage.Oname;
+    const purposes = orphanage.purposes;
+
+    // Iterate over each purpose of the orphanage
+    Object.keys(purposes).forEach(purpose => {
+      const expectedAmount = purposes[purpose].totalExpectAmount;
+      const raisedAmount = purposes[purpose].totalRaisedAmount;
+
+      // Add purpose as label if not already added
+      if (!labels.includes(purpose)) {
+        labels.push(purpose);
+      }
+
+      // Create or update dataset for expected amount
+      let expectedDataset = datasets.find(dataset => dataset.label === `Expected Amount - ${orphanageName}`);
+      if (!expectedDataset) {
+        expectedDataset = {
+          label: `Expected Amount - ${orphanageName}`,
+          data: [],
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        };
+        datasets.push(expectedDataset);
+      }
+      expectedDataset.data.push(expectedAmount);
+
+      // Create or update dataset for raised amount
+      let raisedDataset = datasets.find(dataset => dataset.label === `Raised Amount - ${orphanageName}`);
+      if (!raisedDataset) {
+        raisedDataset = {
+          label: `Raised Amount - ${orphanageName}`,
+          data: [],
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        };
+        datasets.push(raisedDataset);
+      }
+      raisedDataset.data.push(raisedAmount);
+    });
+  });
+
+  // Create the bar chart
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: datasets
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+};
 
   return (
     <div>
       <DonorNavbar />
       <div>
         <img src={p3_img} alt="" style={{ height: 200, width: '100%' }} />
+
         <div className='Analizice'>
           <h1>Donation Analysis</h1>
           <p>Here you can find Donation details About the orphanages. It means Which orphanages frequently get help from donors and which orphanages rarely got help from the Donors. All the analysis you can view and give the donation based on it.</p>
@@ -67,11 +137,22 @@ export const DonorShoe = () => {
               </select>
               <div className='search-icon' onClick={() => { displayAllOrphanages(selectedDistrict) }}>search</div>
             </div>
+
             <ul className='Analizice-orphanage'>
               <p>Total Number of orphanages within {selectedDistrict} : <span>{count}</span> </p>
-              {DistrictOrphanage.map((orphanage, index) => {
-                return (<li key={index} onClick={() => handleClick(orphanage)}>{orphanage.Oname}</li>)
-              })}
+              {districtOrphanage.map((Orphanage, index) => (
+  <li key={index} onClick={() => handleClick(Orphanage.orphanage)}>
+    <p>Orphanage Name: {Orphanage.orphanage.Oname}</p>
+    {/* Check if purposes is an object before using Object.keys() */}
+    {typeof Orphanage.purposes === 'object' && Object.keys(Orphanage.purposes).map((purpose, purposeIndex) => (
+      <div key={purposeIndex}>
+        <p>Purpose: {purpose}</p>
+        <p>Total Expected Amount: {Orphanage.purposes[purpose].totalExpectAmount}</p>
+        <p>Total Raised Amount: {Orphanage.purposes[purpose].totalRaisedAmount}</p>
+      </div>
+    ))}
+  </li>
+))}
             </ul>
           </div>
 

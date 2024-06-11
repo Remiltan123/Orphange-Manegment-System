@@ -39,7 +39,7 @@ export const OrphanageSelect = () => {
     }
   };
 
-  console.log(selectedDistrict)
+  console.log(orphanages)
   return (
     <div className='AllOrphanages-main-continer'>
     <div className='AllOrphanages-Admin-container'>

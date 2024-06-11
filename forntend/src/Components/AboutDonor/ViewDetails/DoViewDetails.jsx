@@ -173,11 +173,11 @@ export const DoViewDetails = () => {
                 <td>{request.date}</td>
                 <td className='amount'>
                     <p>
-                      <strong style={{ opacity: 0.7 }}>Raised:</strong> <span style={{ color: "#ff9900", fontWeight: "bold" }}>${request.expect_amount.toLocaleString()}</span>
+                      <strong style={{ opacity: 0.7 }}>Raised:</strong> <span style={{ color: "#ff9900", fontWeight: "bold" }}>${request.raised_amount.toLocaleString()}</span>
                       <strong style={{ opacity: 0.7 }}> Goal:</strong> <span style={{ fontWeight: "bold", color: "green" }}> ${request.expect_amount.toLocaleString()}</span>
                     </p>
                     <div className="ViewDetails-progress-bar">
-                      <div className="ViewDetails-progress" style={{ width: `${(request.expect_amount /request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
+                      <div className="ViewDetails-progress" style={{ width: `${(request.raised_amount /request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
                     </div>
                 </td>
                 

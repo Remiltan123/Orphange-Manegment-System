@@ -4,8 +4,9 @@ import { useLocation } from 'react-router-dom';
 
 export const OrphanageDetials = () => {
     const location = useLocation();
-    const {Orphange  } = location.state || {};
+    const { Orphanage  } = location.state || {};
 
+ 
   return (
     <>
        <div className='OrphanageDetials-container'>
@@ -14,15 +15,15 @@ export const OrphanageDetials = () => {
                 <div className='Contacts-Us'>
                     <h1>Contacts Us</h1>
                     <div>
-                        <p>Address:<span>{Orphange.Oaddress}</span></p>
+                        <p>Address:<span>{ Orphanage.Oaddress}</span></p>
                         <p></p>
                     </div>
                     <div>
-                        <p>Email:<span>{Orphange.Omail}</span></p>
+                        <p>Email:<span>{ Orphanage.Omail}</span></p>
                         <p></p>
                     </div>
                     <div>
-                        <p>TP NO:<span>{Orphange.Omoboile_no}</span></p>
+                        <p>TP NO:<span>{ Orphanage.Omoboile_no}</span></p>
                         <p></p>
                     </div>
 

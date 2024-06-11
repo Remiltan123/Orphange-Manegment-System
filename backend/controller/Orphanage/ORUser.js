@@ -12,6 +12,7 @@ const { default: mongoose } = require('mongoose');
 const { appendFile } = require('fs');
 const htmlfile = path.join(__dirname, "../../Views/verify.html");
 const arrgentwants = require("../../models/ArgentWants")
+const Do_Request = require("../../models/Donation")
 
 
 const transporter = nodemailer.createTransport({
@@ -293,18 +294,142 @@ router.get("/Logout",(req,res)=>{
 })
 
 
+/*
+router.post("/OrphangeAnalayisis", async (req, res) => {
+    try {
+        const district = req.body.Odistrict;
 
-router.post("/displayOrphange",async(req,res)=>{
-    const district = req.body.Odistrict;
-    let Allorphanage = await Orphanage.find({Odistrict:district})
-    let CountOrphange = await Orphanage.countDocuments({Odistrict:district})
-    if (Allorphanage.length === 0){
-        res.json({success:false, message:"No Any Orphange in " + district})
-    }else{
-        res.send({success:true , data:Allorphanage, count:CountOrphange}) 
+        // Find all orphanages in the given district
+        let Allorphanage = await Orphanage.find({ Odistrict: district });
+
+        if (Allorphanage.length === 0) {
+            return res.json({ success: false, message: "No Any Orphanage in " + district });
+        }
+
+        // Get the count of orphanages in the given district
+        let CountOrphange = Allorphanage.length;
+
+        // Extract orphanage IDs
+        const orphanageIds = Allorphanage.map(orphanage => orphanage.Oid);
+
+        // Find all donation requests for the orphanages in the given district
+        let allDonationRequests = await Do_Request.find({ Or_id: { $in: orphanageIds } });
+
+        // Aggregate donation requests by Or_id and purpose
+        let aggregatedRequests = {};
+
+        allDonationRequests.forEach(request => {
+            const orphanageId = request.Or_id.toString();
+            const purpose = request.purpose;
+
+            if (!aggregatedRequests[orphanageId]) {
+                aggregatedRequests[orphanageId] = {};
+            }
+
+            if (!aggregatedRequests[orphanageId][purpose]) {
+                aggregatedRequests[orphanageId][purpose] = {
+                    totalExpectAmount: 0,
+                    totalRaisedAmount: 0
+                };
+            }
+
+            aggregatedRequests[orphanageId][purpose].totalExpectAmount += request.expect_amount;
+            aggregatedRequests[orphanageId][purpose].totalRaisedAmount += request.raised_amount;
+        });
+
+        // Combine the aggregated data with the orphanage data
+        let result = Allorphanage.map(orphanage => {
+            const orphanageId = orphanage.Oid.toString();
+            const purposes = aggregatedRequests[orphanageId] || {};
+
+            return {
+                orphanage: orphanage,
+                purposes: purposes
+            };
+        });
+
+        return res.json({
+            success: true,
+            data: result,
+            count: CountOrphange,
+            allDonationRequests: allDonationRequests
+        });
+    } catch (err) {
+        console.error("Error occurred: ", err);
+        return res.status(500).json({ success: false, message: "An error occurred while processing your request" });
     }
-    
-})
+});
+*/
+
+
+router.post("/OrphangeAnalayisis", async (req, res) => {
+    try {
+        const district = req.body.Odistrict;
+
+        // Find all orphanages in the given district
+        const allOrphanages = await Orphanage.find({ Odistrict: district });
+
+        if (allOrphanages.length === 0) {
+            return res.json({ success: false, message: "No orphanages found in " + district });
+        }
+
+        const orphanageData = [];
+        for (const orphanage of allOrphanages) {
+            const orphanageId = orphanage.Oid;
+
+            // Find all donation requests for the current orphanage
+            const allDonationRequests = await Do_Request.find({ Or_id: orphanageId });
+
+            const purposes = {};
+            allDonationRequests.forEach(request => {
+                const purpose = request.purpose;
+                if (!purposes[purpose]) {
+                    purposes[purpose] = { totalExpectAmount: 0, totalRaisedAmount: 0 };
+                }
+                purposes[purpose].totalExpectAmount += request.expect_amount;
+                purposes[purpose].totalRaisedAmount += request.raised_amount;
+            });
+
+            orphanageData.push({
+                orphanage: orphanage,
+                purposes: purposes
+            });
+        }
+
+        return res.json({
+            success: true,
+            data: orphanageData
+        });
+    } catch (err) {
+        console.error("Error occurred:", err);
+        return res.status(500).json({ success: false, message: "An error occurred while processing your request" });
+    }
+});
+
+
+router.post("/displayOrphange", async (req, res) => {
+    try {
+        const district = req.body.Odistrict;
+
+        // Find all orphanages in the given district
+        let Allorphanage = await Orphanage.find({ Odistrict: district });
+
+        if (Allorphanage.length === 0) {
+            return res.json({ success: false, message: "No Any Orphanage in " + district });
+        }else{
+            return res.json({ success: true, data: Allorphanage});
+        }
+    }catch(err){
+        console.error("error"+err);
+    }
+      
+});
+
+
+
+
+
+
 
 router.get("/GetArgentWants",async(req,res)=>{
     try{

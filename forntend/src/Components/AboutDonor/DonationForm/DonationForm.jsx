@@ -15,7 +15,6 @@ export const DonationForm = () => {
   const [Donetiondetials, Setdetials] = useState({
     Oname: orphanage?.Oname,
     purpose: request?.purpose,
-    Re_id:request?.Re_id,
     Do_name: "",
     amount: amount,
     Do_email: "",
@@ -46,7 +45,7 @@ console.log(token)
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(Donetiondetials),
+        body: JSON.stringify({...Donetiondetials, _id: request._id}),
       });
 
       const data = await response.json();
