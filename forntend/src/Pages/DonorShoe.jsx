@@ -58,7 +58,7 @@ export const DonorShoe = () => {
           <p>And also you can find all orphanages details by clicking each orphanage.</p>
 
           <div className='district-search'>
-            <div className='search-heading'><p>Search district wise Orphanages Requests</p></div>
+            <div className='search-heading'><p>Search district wise Orphanages Requests fgdre</p></div>
             <div className='Searchbar'>
               <select name="district" id="district" onChange={(e) => { setSelectedDistrict(e.target.value) }}>
                 {district.map((district, index) => (
