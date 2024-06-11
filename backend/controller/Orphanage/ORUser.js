@@ -369,6 +369,8 @@ router.post("/OrphangeAnalayisis", async (req, res) => {
         // Find all orphanages in the given district
         const allOrphanages = await Orphanage.find({ Odistrict: district });
 
+        let countOrphange  = await Orphanage.countDocuments({ Odistrict: district });
+
         if (allOrphanages.length === 0) {
             return res.json({ success: false, message: "No orphanages found in " + district });
         }
@@ -398,7 +400,9 @@ router.post("/OrphangeAnalayisis", async (req, res) => {
 
         return res.json({
             success: true,
-            data: orphanageData
+            data: orphanageData,
+            count: countOrphange,
+           
         });
     } catch (err) {
         console.error("Error occurred:", err);
@@ -413,6 +417,7 @@ router.post("/displayOrphange", async (req, res) => {
 
         // Find all orphanages in the given district
         let Allorphanage = await Orphanage.find({ Odistrict: district });
+
 
         if (Allorphanage.length === 0) {
             return res.json({ success: false, message: "No Any Orphanage in " + district });
@@ -433,7 +438,14 @@ router.post("/displayOrphange", async (req, res) => {
 
 router.get("/GetArgentWants",async(req,res)=>{
     try{
-        const response = await arrgentwants.find({})
+        let response = await arrgentwants.find({})
+
+        const DeteleToRequest = response.filter(request=>request.Raised_amount >= request.goal_amount);
+        const DeletePromise = DeteleToRequest.map(request=>arrgentwants.findByIdAndDelete(request._id))
+        await Promise.all(DeletePromise);
+
+        response = await arrgentwants.find({});
+
         if(!response){
             res.json({success:false,message:"No any request not find"})
         }else{
@@ -445,8 +457,6 @@ router.get("/GetArgentWants",async(req,res)=>{
     }
    
 })
-
-
 
 //Wants Donetion
 router.post("/WantsDonetion", async (req, res) => {

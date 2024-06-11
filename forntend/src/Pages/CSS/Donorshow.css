@@ -1,5 +1,111 @@
-.Analizice-orphange li{
-    color:red;
-    cursor: pointer;
+.Analizice {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin: 20px;
+  }
+  
+  .Analizice h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .Analizice p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .district-search {
+    margin-top: 20px;
+  }
+  
+  .district-search-search-heading p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
 
-}
+
+  .district-search-Searchbar {
+    width: 600px;
+    border: 1px solid #555;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: -10px;
+    padding: -20px 0px;
+    text-align: center;
+    height: 40px;
+  }
+  
+  .district-search-Searchbar select {
+    cursor: pointer;
+    width: 300px;
+    text-decoration: none;
+    border: none;
+    background-color:#f9f9f9;
+    margin-left: 15px;
+    font-size: 17px;
+    appearance: none; 
+    margin-top:1px;
+    padding-top: -10px;
+    height: 30px;
+  }
+  
+  
+  .district-search-search-icon {
+    background-color: orange;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    width: 100px;
+    text-align: center;
+    padding-top: 10px;
+    margin-left: 5px;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  
+  .search-icon:hover {
+    background-color: #0056b3;
+  }
+  
+  .Analizice-orphanage {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-top: 20px;
+  }
+  
+  .Analizice-orphanage p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .orphanage-list {
+    margin-bottom: 20px;
+  }
+  
+  .orphanage-list li {
+    color: red;
+    cursor: pointer;
+    margin: 5px 0;
+    list-style: none;
+  }
+  
+  .orphanage-list li:hover {
+    text-decoration: underline;
+  }
+  
+  .Colorspan{
+    color: #333;
+    font-weight: bold;
+  }
+  .Headimg{
+    margin: 20px 20px;
+   margin-left: 30px;
+  }

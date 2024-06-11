@@ -39,6 +39,9 @@ app.use("/",ORSendmail )
 const AdopterUserRouter = require("./controller/Adopter/Aduser")
 app.use("/", AdopterUserRouter)
 
+//Donor donetion
+const DonorDonetion = require("./controller/Donor/DonationDetails")
+app.use("/",DonorDonetion);
 
 
 

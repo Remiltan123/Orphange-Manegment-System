@@ -13,6 +13,13 @@ router.post("/DistrictWiswSearch", async(req,res)=>{
         }else{
             const OrphangeIds = findorphange.map(orphange=>orphange.Oid)
             let Allorrequest = await Do_Request.find({ Or_id: { $in:OrphangeIds } });
+           
+
+            const requestTodelete = Allorrequest.filter(requst=>requst.raised_amount >= requst.expect_amount);
+            const deletepromise = requestTodelete.map(requst=> Do_Request.findByIdAndDelete(requst._id));
+            await Promise.all( deletepromise);
+
+            Allorrequest = await Do_Request.find({ Or_id: { $in: OrphangeIds } });
             res.json({ success: true, data: Allorrequest });
         } 
     }

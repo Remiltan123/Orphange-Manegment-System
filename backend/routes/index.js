@@ -18,7 +18,7 @@ const FeachVerifications = require("../controller/Orphanage/FechVerification")
 //const SendMail = require("../controller/Orphanage/Mail")
 
 //DONOR
-const GivenDonetion = require("../controller/Donor/DonationDetails")
+//const GivenDonetion = require("../controller/Donor/DonationDetails")
 const ViewFeedback = require("../controller/Donor/viewFeedback")
 const Viewerifications = require("../controller/Donor/ViewAllHistory")
 const Donor_related_Donation = require("../controller/Donor/DonetionStatusOfDonor")
@@ -32,7 +32,7 @@ const AddArregentWants = require("../controller/Orphanage/ArregentWants")
 
 router.post('/Signup',DonorSignup)
 router.post('/DonorLogin',DonorLogin)
-router.post('/GiveDonetion/:token', GivenDonetion )
+//router.post('/GiveDonetion/:token', GivenDonetion )
 router.get('/ViewFeedback/:token',ViewFeedback)
 router.get("/ViewallHistroy/:token",Viewerifications )
 router.get("/GetPerticularDonorDonetion/:token",Donor_related_Donation)

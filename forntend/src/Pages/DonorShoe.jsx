@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { DonorNavbar } from '../Components/Navbars/DonarNavbar/DonorNavbar';
 import p3_img from "../Components/Assets/im3.png";
 import district from "../Components/Assets/District";
@@ -12,7 +12,8 @@ export const DonorShoe = () => {
   const { token } = useParams();
   const [selectedDistrict, setSelectedDistrict] = useState("Jaffna");
   const [districtOrphanage, setDistrictOrphanage] = useState([]);
-  const [count, setCount] = useState();
+  const [count, setCount] = useState([]);
+  const chartRefs = useRef([]);
 
   const displayAllOrphanages = async (district) => {
     try {
@@ -30,9 +31,6 @@ export const DonorShoe = () => {
       } else {
         setDistrictOrphanage(data.data);
         setCount(data.count);
-
-        // Render the bar chart after receiving data
-        renderBarChart(data.data);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -43,84 +41,70 @@ export const DonorShoe = () => {
     displayAllOrphanages(selectedDistrict);
   }, [selectedDistrict]);
 
+  useEffect(() => {
+    districtOrphanage.forEach((orphanage, index) => {
+      renderBarChart(orphanage, index);
+    });
+  }, [districtOrphanage]);
+
   const handleClick = (Orphanage) => {
     navigate(`/Donor/seeorphange/${token}`, { state: { Orphanage } });
   };
 
-  // Function to render the bar chart
-  // Function to render the bar chart
-const renderBarChart = (data) => {
-  const ctx = document.getElementById('barChart');
-  const labels = [];
-  const datasets = [];
+  const renderBarChart = (orphanage, index) => {
+    if (!chartRefs.current[index]) return;
 
-  // Iterate over each orphanage
-  data.forEach(orphanage => {
-    const orphanageName = orphanage.orphanage.Oname;
+    const ctx = chartRefs.current[index].getContext('2d');
+    const labels = [];
+    const expectedDataset = {
+      label: 'Expected Amount',
+      data: [],
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1,
+      barPercentage: 0.3
+    };
+    const raisedDataset = {
+      label: 'Raised Amount',
+      data: [],
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1,
+      barPercentage: 0.3
+    };
+
     const purposes = orphanage.purposes;
-
-    // Iterate over each purpose of the orphanage
     Object.keys(purposes).forEach(purpose => {
-      const expectedAmount = purposes[purpose].totalExpectAmount;
-      const raisedAmount = purposes[purpose].totalRaisedAmount;
-
-      // Add purpose as label if not already added
-      if (!labels.includes(purpose)) {
-        labels.push(purpose);
-      }
-
-      // Create or update dataset for expected amount
-      let expectedDataset = datasets.find(dataset => dataset.label === `Expected Amount - ${orphanageName}`);
-      if (!expectedDataset) {
-        expectedDataset = {
-          label: `Expected Amount - ${orphanageName}`,
-          data: [],
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        };
-        datasets.push(expectedDataset);
-      }
-      expectedDataset.data.push(expectedAmount);
-
-      // Create or update dataset for raised amount
-      let raisedDataset = datasets.find(dataset => dataset.label === `Raised Amount - ${orphanageName}`);
-      if (!raisedDataset) {
-        raisedDataset = {
-          label: `Raised Amount - ${orphanageName}`,
-          data: [],
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        };
-        datasets.push(raisedDataset);
-      }
-      raisedDataset.data.push(raisedAmount);
+      labels.push(purpose);
+      expectedDataset.data.push(purposes[purpose].totalExpectAmount);
+      raisedDataset.data.push(purposes[purpose].totalRaisedAmount);
     });
-  });
 
-  // Create the bar chart
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: datasets
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    if (window[`myChart${index}`] instanceof Chart) {
+      window[`myChart${index}`].destroy();
+    }
+
+    window[`myChart${index}`] = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [expectedDataset, raisedDataset]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-};
+    });
+  };
 
   return (
     <div>
       <DonorNavbar />
       <div>
-        <img src={p3_img} alt="" style={{ height: 200, width: '100%' }} />
+        <img src={p3_img} alt="" style={{ height: 300, width: '95%' }} className='Headimg'/>
 
         <div className='Analizice'>
           <h1>Donation Analysis</h1>
@@ -128,34 +112,42 @@ const renderBarChart = (data) => {
           <p>And also you can find all orphanages details by clicking each orphanage.</p>
 
           <div className='district-search'>
-            <div className='search-heading'><p>Search district wise Orphanages Requests fgdre</p></div>
-            <div className='Searchbar'>
+            <div className='district-search-search-heading'><p>Search district wise Orphanages Requests</p></div>
+            <div className='district-search-Searchbar'>
               <select name="district" id="district" onChange={(e) => { setSelectedDistrict(e.target.value) }}>
                 {district.map((district, index) => (
                   <option value={district} key={index}>{district}</option>
                 ))}
               </select>
-              <div className='search-icon' onClick={() => { displayAllOrphanages(selectedDistrict) }}>search</div>
+              <div className='district-search-search-icon' onClick={() => { displayAllOrphanages(selectedDistrict) }}>search</div>
             </div>
-
-            <ul className='Analizice-orphanage'>
-              <p>Total Number of orphanages within {selectedDistrict} : <span>{count}</span> </p>
-              {districtOrphanage.map((Orphanage, index) => (
-  <li key={index} onClick={() => handleClick(Orphanage.orphanage)}>
-    <p>Orphanage Name: {Orphanage.orphanage.Oname}</p>
-    {/* Check if purposes is an object before using Object.keys() */}
-    {typeof Orphanage.purposes === 'object' && Object.keys(Orphanage.purposes).map((purpose, purposeIndex) => (
-      <div key={purposeIndex}>
-        <p>Purpose: {purpose}</p>
-        <p>Total Expected Amount: {Orphanage.purposes[purpose].totalExpectAmount}</p>
-        <p>Total Raised Amount: {Orphanage.purposes[purpose].totalRaisedAmount}</p>
-      </div>
-    ))}
-  </li>
-))}
-            </ul>
           </div>
 
+          <ul className='Analizice-orphanage'>
+            <p>Total Number of orphanages within {selectedDistrict} : <span>{count}</span> </p>
+            <div className="orphanage-list">
+              {districtOrphanage.map((Orphanage, index) => (
+                <li key={index} onClick={() => handleClick(Orphanage.orphanage)}>
+                  {Orphanage.orphanage.Oname}
+                </li>
+              ))}
+            </div>
+            {districtOrphanage.map((Orphanage, index) => (
+              <div key={index}>
+                <h2 onClick={() => handleClick(Orphanage.orphanage)} style={{color:'green',cursor:'pointer'}} >{Orphanage.orphanage.Oname}</h2>
+                {typeof Orphanage.purposes === 'object' && Object.keys(Orphanage.purposes).map((purpose, purposeIndex) => (
+                  <div key={purposeIndex}>
+                    <p>Purpose: <span className='Colorspan'>{purpose}</span></p>
+                    <p>Total Expected Amount: <span className='Colorspan'>{Orphanage.purposes[purpose].totalExpectAmount}</span></p>
+                    <p>Total Raised Amount: <span className='Colorspan'>{Orphanage.purposes[purpose].totalRaisedAmount}</span></p>
+                  </div>
+                ))}
+                <div className='chart-container'>
+                  <canvas id={`barChart${index}`} ref={el => chartRefs.current[index] = el}></canvas>
+                </div>
+              </div>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

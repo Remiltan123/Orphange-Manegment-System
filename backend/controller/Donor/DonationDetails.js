@@ -2,6 +2,7 @@ const Do_Details = require("../../models/DonorModels/Donetion_Detials");
 const Do_Request = require("../../models/Donation");
 const NodeRSA = require('node-rsa');
 const jwt = require('jsonwebtoken');
+const router = require("../../routes");
 
 // Private key
 const private_key = '-----BEGIN PRIVATE KEY-----\n'+
@@ -20,7 +21,7 @@ const key_public = new NodeRSA(private_key);
 key_public.exportKey("pkcs8-private"); // private
 key_public.exportKey("pkcs8-public");  // public
 
-const GivenDonation = async (req, res) => {
+router.post("/GiveDonetion/:token",async(req,res)=>{
     const { Oname, purpose, amount, Do_name, Do_email, card_No, CCV, month } = req.body;
     const { token } = req.params;
 
@@ -85,6 +86,7 @@ const GivenDonation = async (req, res) => {
         console.error("Error occurred: " + err);
         res.status(500).json({ success: false, message: "Error occurred while saving the data" });
     }
-};
+})
 
-module.exports = GivenDonation;
+
+module.exports = router;
