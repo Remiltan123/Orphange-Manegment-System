@@ -51,7 +51,7 @@ export const AdobtLogin = () => {
         <div className='AdobtLogin-body'>
           <input type="password" />
           <input type="text" placeholder='Email' className='AdobtLogin-body-input' name='email' onChange={HandleChange } />
-          <input type='password' placeholder='Password' className='AdobtLogin-body-input' name='password' onChange={HandleChange }/>
+          <input type="text" placeholder='Password' className='AdobtLogin-body-input' name='password' onChange={HandleChange }/>
 
           { <Link to="/forgotpassword" style={{textDecoration:"none", color: "red"}}><div className='forgot-password'>Forgot password?</div></Link>}
 
