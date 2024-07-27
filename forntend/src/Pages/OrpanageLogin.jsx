@@ -45,14 +45,17 @@ export const OrpanageLogin = () => {
         },
         body: JSON.stringify(formdata),
       });
+
       const data = await response.json();
+
       if (data.success) {
-        localStorage.setItem('auth-token', data.token);
+        const token = data.token
         toast.success(data.message);
-        navigate(`/Orphanage/${id}`);
+        navigate(`/Orphanage/${token}`);
       } else {
         toast.error(data.message);
       }
+
     } catch (error) {
       console.error('Error:', error);
       toast.error('An error occurred. Please try again later.');

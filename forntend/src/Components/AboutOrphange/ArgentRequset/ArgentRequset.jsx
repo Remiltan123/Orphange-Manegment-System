@@ -6,12 +6,13 @@ import {toast} from "react-toastify"
 
 export const ArgentRequset = () => {
 
-  const { id } = useParams();
+  const { token } = useParams();
   const [orphanage, setOrphanage] = useState({});
   const[state,Setstate]=useState(true)
   const[image,setImage]=useState(null);
+
   const [wantsdetils,Setwantsdetils]= useState({
-    Or_id:id,
+    Or_id:"",
     purpose:"",
     goal_amount:"",
     Raised_amount:"0",
@@ -26,6 +27,25 @@ export const ArgentRequset = () => {
   const imageHandle =(e)=>{
     setImage(e.target.files[0])
   }
+
+  useEffect(() => {
+    const fetchOrphanage = async () => {
+      try {
+        const response = await fetch(`http://localhost:1010/getorphanage/${token}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch orphanage');
+        }
+        const data = await response.json();
+        setOrphanage(data.ORData);
+        Setwantsdetils(d=>({...d, Or_id:data.ORData.Oid}))
+  
+
+      } catch (error) {
+        console.error('Error fetching orphanage:', error);
+      }
+    };
+    fetchOrphanage();
+  }, []);
 
   const AddWants = async () => {
    
@@ -72,23 +92,6 @@ export const ArgentRequset = () => {
     }
 }
 
-  useEffect(() => {
-    const fetchOrphanage = async () => {
-      try {
-        const response = await fetch(`http://localhost:1010/orphanage/${id}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch orphanage');
-        }
-        const data = await response.json();
-        setOrphanage(data);
-      } catch (error) {
-        console.error('Error fetching orphanage:', error);
-      }
-    };
-    fetchOrphanage();
-  }, [id]);
-
-
   return (
     <div className='ArgentRequset-container'>
         <div className='ArgentRequset'>
@@ -101,7 +104,7 @@ export const ArgentRequset = () => {
           {state && (<div className='sub-ArgentRequset-container'>
             <tr>
               <td>Orphanage Name:</td>
-              <td><input type="text" placeholder={orphanage.Oname} className='Orphangename' value={orphanage.Ona} /></td>
+              <td><input type="text" placeholder={orphanage.Oname} className='Orphangename' value={orphanage.Oname} /></td>
             </tr>
 
       

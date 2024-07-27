@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import { SideBar } from '../SideBar/SideBar';
 
 export const ArrgentAdminpanal = () => {
-    const {id}=useParams()
+    const {token} = useParams()
   return (
     <div>
-        <OrphanageNavbar id={id}/>
+        <OrphanageNavbar token={token}/>
         <SideBar/>
     </div>
   )

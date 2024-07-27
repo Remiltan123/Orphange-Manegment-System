@@ -81,12 +81,9 @@ app.post("/upload", upload.single('image'), (req, res) => {
 });
 
 
-
-
-
-//select priticular orphange
+///select priticular orphange when select
 app.get("/orphanage/:id", async (req, res) => {
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     try {
         const ReqOrphanage = await Orphanage.findOne({ Oid: id });
         if (!ReqOrphanage) {
@@ -98,6 +95,35 @@ app.get("/orphanage/:id", async (req, res) => {
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 });
+
+
+//select priticular orphange
+app.get("/getorphanage/:token", async (req, res) => {
+    
+    let token = req.params.token;
+    
+    try {
+        const decoded = jwt.verify(token, process.env.KEY);
+        let id = decoded.id;
+        
+        const ReqOrphanage = await Orphanage.findOne({ _id: id });
+        if (!ReqOrphanage) {
+            return res.status(404).json({ success: false, message: "Orphanage not found" });
+        }
+        
+        res.json({ success: true, ORData: ReqOrphanage });
+
+    } catch (error) {
+        console.error('Error fetching orphanage:', error);
+        
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(400).json({ success: false, message: "Invalid token" });
+        }
+        
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
 
 
 

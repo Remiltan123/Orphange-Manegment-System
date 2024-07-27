@@ -7,9 +7,11 @@ import {toast} from "react-toastify"
 
 export const GiveReDonor = () => {
 
-  const { id } = useParams();
+  const { token} = useParams();
   const [orphanage, setOrphanage] = useState({});
-  const [donationdetails ,Setdonationdetails]=useState({Or_id:id});
+  const [donationdetails ,Setdonationdetails]=useState({
+    Or_id:""
+  });
 
   const HandleChange = (e)=>{
     Setdonationdetails({...donationdetails,[e.target.name]:e.target.value})
@@ -19,18 +21,20 @@ export const GiveReDonor = () => {
   useEffect(() => {
     const fetchOrphanage = async () => {
       try {
-        const response = await fetch(`http://localhost:1010/orphanage/${id}`);
+        const response = await fetch(`http://localhost:1010/getorphanage/${token}`);
         if (!response.ok) {
           throw new Error('Failed to fetch orphanage');
         }
         const data = await response.json();
-        setOrphanage(data);
+        setOrphanage(data.ORData);
+        Setdonationdetails(d => ({ ...d, Or_id: data.ORData.Oid }));
       } catch (error) {
         console.error('Error fetching orphanage:', error);
       }
     };
     fetchOrphanage();
-  }, [id]);
+  }, [token]);
+  
 
   const AddDonation = async()=>{
     const responsedata = await fetch("http://localhost:1010/RequestDonetion",{
@@ -48,12 +52,12 @@ export const GiveReDonor = () => {
       toast.error(data.message)
     }
   }
-
+console.log(orphanage.Oid)
 
   return (
     <>
     <div className='GiveReDonor-container'>
-        <OrphanageNavbar id={id}/>
+        <OrphanageNavbar token={token}/>
         <div className='GiveReDonor'>
 
           <div className='give-requst '><h2>GIVE REQUEST TO DONOR</h2></div>

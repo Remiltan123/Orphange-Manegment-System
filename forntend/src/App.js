@@ -57,15 +57,15 @@ function App() {
         
         <Route path='/OrphanageSelect' element={<OrphanageSelect/>}></Route>
         <Route path='/OrphanageLogin/:id' element={<OrpanageLogin/>}></Route>
-        <Route path='/Orphanage/:id' element={<OrphanageShow/>} />
-          <Route path='/Orphanage/:id/GiveReDonor' element={<> <GiveReDonor/></>} />
-          <Route path='/Orphanage/:id/seerequested' element={<> <SeeRequested /></>} />
-          <Route path='/Orphanage/:id/ViewReStatus' element={<><ViewReStatus/></>} />
-          <Route path='/Orphanage/:id/ArrgentAdmin' element={<ArrgentAdminpanal/>} />
-          <Route path='/Orphanage/:id/Add Child' element={<><OrphanageNavbar/> <Addchild/></>} />
+        <Route path='/Orphanage/:token' element={<OrphanageShow/>} />
+          <Route path='/Orphanage/GiveReDonor/:token' element={<> <GiveReDonor/></>} />
+          <Route path='/Orphanage/seerequested/:token' element={<> <SeeRequested /></>} />
+          <Route path='/Orphanage/ViewReStatus/:token' element={<><ViewReStatus/></>} />
+          <Route path='/Orphanage/ArrgentAdmin/:token' element={<ArrgentAdminpanal/>} />
+          <Route path='/Orphanage/Add Child/:token' element={<><OrphanageNavbar/> <Addchild/></>} />
           <Route path='/Orphanage-Name/Add Child/moredetilas' element={<><OrphanageNavbar/> <Addmorechild/></>} />
-          <Route path='/Orphanage/:id/UpdateChild' element={<><OrphanageNavbar/> <ViewChild/></>} />
-          <Route path='/Orphanage/:id/AcceptAdoption' element={<><OrphanageNavbar/> <AcceptAdoption /></>} />
+          <Route path='/Orphanage/UpdateChild/:token' element={<><OrphanageNavbar/> <ViewChild/></>} />
+          <Route path='/Orphanage/AcceptAdoption/:token' element={<><OrphanageNavbar/> <AcceptAdoption /></>} />
 
           
         
@@ -78,7 +78,7 @@ function App() {
           <Route path="/forgotpassword" element={<Forgotpassword/>} />
           <Route path="/resetpassword/:token" element={<ResetPassword/>} />
           <Route path='/Donor/ViewDetails/Donetion/:token' element={<><DonorNavbar/> <DonationForm/></>} />
-          <Route path='/Donor/seeorphange/:token' element={<><DonorNavbar/> <OrphanageDetials/></>} />
+          <Route path='/Donor/seeorphange/:token' element={<><DonorNavbar/><OrphanageDetials/></>} />
 
 
         <Route path='/Adopt' element={<AdobtLogin/>}></Route>

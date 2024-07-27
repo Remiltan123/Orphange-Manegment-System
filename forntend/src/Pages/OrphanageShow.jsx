@@ -12,7 +12,7 @@ import {toast} from 'react-toastify'
 
 export const OrphanageShow = () => {
   
-  const { id } = useParams();
+  const { token } = useParams();
   const[isopen,setIsOpen] = useState(false)
   const toggle = ()=>setIsOpen(!isopen)
 
@@ -30,10 +30,12 @@ export const OrphanageShow = () => {
       toast.success(data.message)
     }
   }
-  
+
+  console.log("jbj"+ token)
+ 
   return (
     <div>
-      <OrphanageNavbar id={id}/>
+      <OrphanageNavbar token={token}/>
       <div className='OrphanageNavbar-body'>
         <div className='OrphanageNavbar-body-image'>
           <img src={p3_img} alt="" style={{ height: "100%", width:'100%'}} />
@@ -41,13 +43,13 @@ export const OrphanageShow = () => {
         <div className={`Orphanage-Links ${isopen ? 'open' : ''}`}>
             <ul>
               <div><li> <Link to="/" style={{ textDecoration: "none", color: "white" }}>Home</Link> </li></div>
-              <div><li> <Link to={`/Orphanage/${id}/ArrgentAdmin`} style={{ textDecoration: "none", color: "white" }}>Add Arrent Wants</Link> </li></div> 
-              <div><li> <Link to={`/Orphanage/${id}/GiveReDonor`} style={{ textDecoration: "none", color: "white" }}>Give Request to Donate</Link> </li></div>
-              <div><li> <Link to={`/Orphanage/${id}/seerequested`} style={{ textDecoration: "none", color: "white" }}>See Requested</Link> </li></div>
-              <div><li> <Link to={`/Orphanage/${id}/ViewReStatus`} style={{ textDecoration: "none", color: "white" }}>View Request Status</Link> </li></div>
-              <div><li> <Link to={`/Orphanage/${id}/Add Child`} style={{ textDecoration: "none", color: "white" }}>Add Child</Link> </li></div>
-              <div><li> <Link to={`/Orphanage/${id}/UpdateChild`} style={{ textDecoration: "none", color: "white" }}>Update Child</Link> </li></div>
-              <div><li> <Link to={`/Orphanage/${id}/AcceptAdoption`} style={{ textDecoration: "none", color: "white" }}>Accept Adoption</Link> </li></div>
+              <div><li> <Link to={`/Orphanage/ArrgentAdmin/${token}`} style={{ textDecoration: "none", color: "white" }}>Add Arrent Wants</Link> </li></div> 
+              <div><li> <Link to={`/Orphanage/GiveReDonor/${token}`} style={{ textDecoration: "none", color: "white" }}>Give Request to Donate</Link> </li></div>
+              <div><li> <Link to={`/Orphanage/seerequested/${token}`} style={{ textDecoration: "none", color: "white" }}>See Requested</Link> </li></div>
+              <div><li> <Link to={`/Orphanage/ViewReStatus/${token}`} style={{ textDecoration: "none", color: "white" }}>View Request Status</Link> </li></div>
+              <div><li> <Link to={`/Orphanage/Add Child/${token}`} style={{ textDecoration: "none", color: "white" }}>Add Child</Link> </li></div>
+              <div><li> <Link to={`/Orphanage/UpdateChild/${token}`} style={{ textDecoration: "none", color: "white" }}>Update Child</Link> </li></div>
+              <div><li> <Link to={`/Orphanage/AcceptAdoption/${token}`} style={{ textDecoration: "none", color: "white" }}>Accept Adoption</Link> </li></div>
               <div ><li onClick={ Logout} > <Link to="/" style={{ textDecoration: "none", color: "white" }} >Logout</Link> </li></div>
             </ul>
         </div>

@@ -196,7 +196,7 @@ router.post("/login", async (req, res) => {
     try {
         const orphanage = await Orphanage.findOne({ Omail });
         if (!orphanage) {
-            return res.json({ success: false, message: "Invalid user entered. Please sign up." });
+            return res.json({ success: false, message: "Invalid user entered. Please sign up" });
         }
         else if(!orphanage.verified){
             return res.json({ success: false, message: "Email has't verified. check your inbox" });
@@ -205,7 +205,12 @@ router.post("/login", async (req, res) => {
             
             const isMatch = await bcrypt.compare(Opassword, orphanage.Opassword);
             if (isMatch) {
-                res.json({ success: true, message: "Login Successfully", data:orphanage.Oname });
+                const token = jwt.sign(
+                    {id: orphanage._id, OrphanageName: orphanage.Oname },
+                    process.env.KEY,
+                    {expiresIn: "1h"},
+                );
+                res.json({ success: true, message: "Login Successfully", token:token });
             } else {
                 res.json({ success: false, message: "Invalid password!" });
         }

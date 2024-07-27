@@ -6,7 +6,7 @@ import upload_image from '../../Assets/upload_area.svg';
 import { toast } from 'react-toastify';
 
 export const ArrentMailSend = () => {
-    const { id } = useParams();
+    
     const [emailDetails, setEmail] = useState({
         to: '',
         subject: '',
@@ -72,7 +72,7 @@ export const ArrentMailSend = () => {
             }
         };
         fetchEmail();
-    }, [id]);
+    }, []);
 
     console.log(emailDetails.to);
 
