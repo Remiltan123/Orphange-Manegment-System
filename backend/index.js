@@ -43,6 +43,10 @@ app.use("/", AdopterUserRouter)
 const DonorDonetion = require("./controller/Donor/DonationDetails")
 app.use("/",DonorDonetion);
 
+//About child
+const AboutChild = require("./controller/Orphanage/AboutChlid")
+app.use("/", AboutChild )
+
 
 
 

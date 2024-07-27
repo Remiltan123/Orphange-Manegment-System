@@ -2,14 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .Addchild-container{
-    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border: 1.5px solid greenyellow;
-    border-radius: 15px;
     width: 550px;
-    height: 550px;
-   background-color: aliceblue;
+    height: 400px;
+    
+    
 }
 .Addchild-container-head{
     background-color: greenyellow;
@@ -20,6 +21,7 @@
 }
 .Addchild-container-body{
     margin-left: 100px;
+   
 }
 .Addchild-image{
     margin-top: 20px;
@@ -76,4 +78,23 @@
     border: none;
     cursor: pointer;
     font-weight: 600;
+}
+.Child-header{
+    margin: 60px 60px;
+    display: flex;
+    justify-content: center;
+    
+}
+.child-header-image{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 600px;
+    height: 400px;
+}
+.AddChild-button{
+    margin-top: 20px;
+    border: none;
+    padding: 5px 10px;
+    background-color: rgb(74, 74, 201);
+    font-weight: bold;
+   
 }

@@ -62,10 +62,10 @@ function App() {
           <Route path='/Orphanage/seerequested/:token' element={<> <SeeRequested /></>} />
           <Route path='/Orphanage/ViewReStatus/:token' element={<><ViewReStatus/></>} />
           <Route path='/Orphanage/ArrgentAdmin/:token' element={<ArrgentAdminpanal/>} />
-          <Route path='/Orphanage/Add Child/:token' element={<><OrphanageNavbar/> <Addchild/></>} />
-          <Route path='/Orphanage-Name/Add Child/moredetilas' element={<><OrphanageNavbar/> <Addmorechild/></>} />
-          <Route path='/Orphanage/UpdateChild/:token' element={<><OrphanageNavbar/> <ViewChild/></>} />
-          <Route path='/Orphanage/AcceptAdoption/:token' element={<><OrphanageNavbar/> <AcceptAdoption /></>} />
+          <Route path='/Orphanage/Add Child/:token' element={<><Addchild/></>} />
+          <Route path='/Orphanage-Name/Add Child/moredetilas' element={<> <Addmorechild/></>} />
+          <Route path='/Orphanage/UpdateChild/:token' element={<><ViewChild/></>} />
+          <Route path='/Orphanage/AcceptAdoption/:token' element={<> <AcceptAdoption /></>} />
 
           
         
