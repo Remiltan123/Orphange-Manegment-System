@@ -35,6 +35,7 @@ import { ResetPassword } from './Components/AboutDonor/ResetPassword/ResetPasswo
 import { ArrgentAdminpanal } from './Components/AboutOrphange/ArrgentAdminpanal/ArrgentAdminpanal.jsx';
 import { WantsDonetion } from './Components/WantsDonetion/WantsDonetion.js';
 import { OrphanageDetials } from './Pages/OrphanageDetials.jsx';
+import { AdoptionShow } from './Pages/AdoptionShow.jsx';
 
 
 
@@ -83,7 +84,8 @@ function App() {
 
         <Route path='/Adopt' element={<AdobtLogin/>}></Route>
         <Route path='/Adobt/Regester' element={<AdobtRegister/>}></Route>
-        <Route path='/Adobt/ViewChild' element={<><AdoptNavbar/><AdoptViewChild/></>}></Route>
+        <Route path='/Adopt/Show/:token' element={<><AdoptNavbar/> <AdoptionShow/></>}> </Route>
+        <Route path='/Adobt/ViewChild/:token' element={<><AdoptNavbar/><AdoptViewChild/></>}></Route>
         <Route path="/Viewchild/:id" element={<><AdoptNavbar/><MoreaboutOnechild/></>} />
         
 

@@ -96,5 +96,6 @@
     padding: 5px 10px;
     background-color: rgb(74, 74, 201);
     font-weight: bold;
+    cursor: pointer;
    
 }
