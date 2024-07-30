@@ -108,4 +108,17 @@
 .Mother-image{
     margin-top: 40px;
 }
+.Child-view-div {
+    position: fixed;
+    top: 100px;
+    right: 15px;
+    z-index: 1000;
+    background-color: rgb(26, 227, 26);
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    color: red;
+    font-weight: bold;
+  }
 

@@ -2,17 +2,27 @@ import React, { useState } from 'react';
 import "./CSS/AdoptionShow.css";
 import adoptType from "../Components/Assets/AdoptType.png";
 import motherimg from "../Components/Assets/Mother.png"
+import { useParams,useNavigate } from 'react-router-dom';
 
 export const AdoptionShow = () => {
   const [activeStep, setActiveStep] = useState(null);
+  const {token} = useParams();
+  const navigate = useNavigate()
 
   const toggleAnswer = (step) => {
     setActiveStep(activeStep === step ? null : step);
   };
 
+  const ClickHandle = ()=>{
+    navigate(`/Adobt/ViewChild/${token}`)
+  }
+
   return (
     <div className='AdoptionShow-Header'>
       <img src={adoptType} alt="" className='adoptType-image' />
+      <div onClick={()=>{ClickHandle()}} className='Child-view-div'>
+          To View Childs
+      </div>
       <div className='AdoptionShow-Header-FDA'>
         <h1>Steps to adopt a child</h1>
         <div className='FDA-p'>
@@ -167,7 +177,7 @@ export const AdoptionShow = () => {
                 <span style={{color:'yellow'}}>NOTE:</span> We contineously checked every year. You proparly carring child or Not. You dont proparly carring then we have to take action aggaints you.
             </p>
 
-            <button className='AbleTO-Adobt-button'>View Childs ---- </button>
+            <button className='AbleTO-Adobt-button' onClick={()=>{ClickHandle()}}>View Childs ---- </button>
             <img src={motherimg} alt="" className='Mother-image'/>
         </div>
     </div>

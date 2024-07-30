@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { useParams } from 'react-router-dom';
 import "./MoreaboutOnechild.css";
 import childs_data from "../../Assets/Data";
@@ -44,4 +44,4 @@ const getChildById = (id) => {
   return null;
 };
 
-export default MoreaboutOnechild;
+export default MoreaboutOnechild; */

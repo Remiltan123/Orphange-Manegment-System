@@ -113,6 +113,33 @@ router.post("/RemoveChild", async (req, res) => {
     }
   });
 
+// Group the childs  base on the orphange 
+router.get("/GroupChild", async(req,res)=>{
+    try{
+        const response = await Orphanges.aggregate([
+            {
+                $lookup:{
+                    from: 'childs',
+                    localField: 'Oid',
+                    foreignField: 'OR_id',
+                    as: 'children'
+                }
+            }
+        ])
+
+        if( response.length===0){
+            res.json({success:false, message:"NO ANY ORPHANGE NOT CONTAINTS CHILS"})
+        }else{
+            res.json({success:true, Data:response})
+        }
+
+    }catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false, message: "Something went wrong, please try again" });
+    }
+    
+})
+
 
 
 
