@@ -1,8 +1,10 @@
-.AdoptViewChild-maincontainer{
+.AdoptViewChild-maincontainer,.opacity-AdoptViewChild-maincontainer{
     background-color: #ddd8d8;
     margin: 0;
-    margin-bottom: -20px;
-    
+    margin-bottom: -20px; 
+}
+.opacity-AdoptViewChild-maincontainer{
+    opacity: 0.7;
 }
 .child_detials{
     display: flex;
@@ -132,6 +134,7 @@
    padding: 10px 20px;
    margin-top: -5px;
    width: 100px;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 

@@ -23,7 +23,7 @@ import { Addchild } from './Components/AboutOrphange/AddnewChild/Addchild.jsx';
 import { Addmorechild } from './Components/AboutOrphange/Addmorechild/Addmorechild.jsx';
 import { ViewChild } from './Components/AboutOrphange/ViewChild/ViewChild.jsx';
 import AdoptViewChild from './Components/AboutAdopt/AdoptViewChild/AdoptViewChild.jsx';
-import MoreaboutOnechild from './Components/AboutAdopt/MoreaboutOnechild/MoreaboutOnechild.jsx';
+
 import { AcceptAdoption } from './Components/AboutOrphange/AcceptAdoption/AcceptAdoption.jsx';
 import { AdoptNavbar } from './Components/Navbars/AdobtNavbar/AdobtNavbar.jsx';
 
@@ -36,6 +36,7 @@ import { ArrgentAdminpanal } from './Components/AboutOrphange/ArrgentAdminpanal/
 import { WantsDonetion } from './Components/WantsDonetion/WantsDonetion.js';
 import { OrphanageDetials } from './Pages/OrphanageDetials.jsx';
 import { AdoptionShow } from './Pages/AdoptionShow.jsx';
+import { ORdetails } from './Components/AboutAdopt/MoreaboutOnechild/ORdetails.jsx';
 
 
 
@@ -86,7 +87,7 @@ function App() {
         <Route path='/Adobt/Regester' element={<AdobtRegister/>}></Route>
         <Route path='/Adopt/Show/:token' element={<><AdoptNavbar/> <AdoptionShow/></>}> </Route>
         <Route path='/Adobt/ViewChild/:token' element={<><AdoptNavbar/><AdoptViewChild/></>}></Route>
-        <Route path="/Viewchild/:id" element={<><AdoptNavbar/><MoreaboutOnechild/></>} />
+        <Route path='/Adopter/vieworphange/:token' element={<><AdoptNavbar/><ORdetails/></>} />
         
 
         
