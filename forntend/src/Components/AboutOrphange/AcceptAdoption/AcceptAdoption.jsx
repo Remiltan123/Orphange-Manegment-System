@@ -8,7 +8,9 @@ export const AcceptAdoption = () => {
   const [orphange, setOrphange] = useState({});
   const [adoptChild, setAdoptChild] = useState([]);
   const { token } = useParams();
-  const[ attachment,Setattachment]= useState(null)
+  const[ attachment,Setattachment]= useState(null);
+  const [orphangemail, Setorphangemail] = useState();
+  const[loading,Setloading] = useState(false)
 
   const [submit, setSubmit] = useState({
     id: '',
@@ -44,6 +46,7 @@ export const AcceptAdoption = () => {
 
   useEffect(() => {
     getAdoptChild();
+    fetchOrphanage();
   }, [token]);
 
   const formatDate = (dateString) => {
@@ -87,6 +90,7 @@ export const AcceptAdoption = () => {
   };
 
   const handleSubmit = async () => {
+    Setloading(true)
     const numericSubmitId = parseInt(submit.id, 10);  // Convert submit.id to a number
     const selectedChild = adoptChild.find(child => child.adoptedDetails.Ch_id === numericSubmitId);
     
@@ -103,7 +107,6 @@ export const AcceptAdoption = () => {
     }
   
     const adopterEmail = selectedChild.adopterDetails.email;
-    const orphanageEmail = "orphanagegroup09@gmail.com";
     const subject = `Adoption Request ${submit.type}`;
     var type = submit.type.toLowerCase();
     var text = submit.type === "Accepted" 
@@ -118,7 +121,7 @@ export const AcceptAdoption = () => {
   
     // Prepare form data
     const formData = new FormData();
-    formData.append("from", orphanageEmail);
+    formData.append("from", orphangemail);
     formData.append("to", adopterEmail);
     formData.append("subject", subject);
     formData.append("text", text);
@@ -128,11 +131,12 @@ export const AcceptAdoption = () => {
     }
   
     await sendEmail(formData);
+    Setloading(false)
   };
   
   
 
-  console.log(adoptChild)
+  console.log(orphangemail)
 
   const sendEmail = async (formData) => {
     const response = await fetch("http://localhost:1010/Send-replay-mail", {
@@ -146,6 +150,20 @@ export const AcceptAdoption = () => {
       toast.success(resData.message);
     }
   };
+
+
+  const fetchOrphanage = async () => {
+    try {
+        const response = await fetch(`http://localhost:1010/getorphanage/${token}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch orphanage');
+        }
+        const data = await response.json();
+        Setorphangemail(data.ORData.Omail);
+    } catch (error) {
+        console.error('Error fetching orphanage:', error);
+    }
+};
 
   return (
     <>
@@ -210,8 +228,12 @@ export const AcceptAdoption = () => {
               </div>
 
               <div className='AcceptAdoption-button'>
-                <button onClick={ handleSubmit}>Submit</button>
+                <button onClick={handleSubmit} disabled={loading}>
+                  {loading ? "Submitting....." : "Submit"}
+                </button>
               </div>
+
+              
             </div>
           </div>
         </div>
