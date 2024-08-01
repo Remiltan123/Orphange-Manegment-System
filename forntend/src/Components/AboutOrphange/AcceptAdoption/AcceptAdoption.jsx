@@ -8,6 +8,7 @@ export const AcceptAdoption = () => {
   const [orphange, setOrphange] = useState({});
   const [adoptChild, setAdoptChild] = useState([]);
   const { token } = useParams();
+  const[ attachment,Setattachment]= useState(null)
 
   const [submit, setSubmit] = useState({
     id: '',
@@ -62,12 +63,12 @@ export const AcceptAdoption = () => {
     if (!resData.success) {
       toast.error(resData.message);
     }else{
-      toast.success(resData.message)
+      //toast.success(resData.message)
       getAdoptChild();
     }
   };
 
-
+  //console.log(adoptChild)
   const rejectAdoption = async (id) => {
     const response = await fetch("http://localhost:1010/Reject-Request", {
       method: "POST",
@@ -80,27 +81,70 @@ export const AcceptAdoption = () => {
     if (!resData.success) {
       toast.error(resData.message);
     }else{
-      toast.success(resData.message)
+      //toast.success(resData.message)
       getAdoptChild();
     }
   };
 
-  const handleSubmit = () => {
-    if(submit.type === "Accepted"){
-      if (submit.id && submit.type) {
-        acceptAdoption(submit.id);
-      } else {
-        toast.error("Please select a child and a decision");
-      }
-    }
-    else if(submit.type === "Rejected"){
-      if (submit.id && submit.type) {
-        rejectAdoption(submit.id);
-      } else {
-        toast.error("Please select a child and a decision");
-      }
-    }
+  const handleSubmit = async () => {
+    const numericSubmitId = parseInt(submit.id, 10);  // Convert submit.id to a number
+    const selectedChild = adoptChild.find(child => child.adoptedDetails.Ch_id === numericSubmitId);
     
+    console.log("Selected Child:", selectedChild);  
+  
+    if (!selectedChild) {
+      toast.error("Child not found");
+      return;
+    }
+  
+    if (!selectedChild.adopterDetails) {
+      toast.error("Adopter details not found");
+      return;
+    }
+  
+    const adopterEmail = selectedChild.adopterDetails.email;
+    const orphanageEmail = "orphanagegroup09@gmail.com";
+    const subject = `Adoption Request ${submit.type}`;
+    var type = submit.type.toLowerCase();
+    var text = submit.type === "Accepted" 
+      ? `Your adoption request has been ${submit.type.toLowerCase()}. Please Carefully Read the bellow Pdf`
+      : `Your adoption request has been ${submit.type.toLowerCase()}`;
+  
+    if (submit.type === "Accepted") {
+      await acceptAdoption(numericSubmitId);
+    } else if (submit.type === "Rejected") {
+      await rejectAdoption(numericSubmitId);
+    }
+  
+    // Prepare form data
+    const formData = new FormData();
+    formData.append("from", orphanageEmail);
+    formData.append("to", adopterEmail);
+    formData.append("subject", subject);
+    formData.append("text", text);
+    formData.append("type", type);
+    if (attachment) {
+      formData.append("attachment", attachment);
+    }
+  
+    await sendEmail(formData);
+  };
+  
+  
+
+  console.log(adoptChild)
+
+  const sendEmail = async (formData) => {
+    const response = await fetch("http://localhost:1010/Send-replay-mail", {
+      method: "POST",
+      body: formData
+    });
+    const resData = await response.json();
+    if (!resData.success) {
+      toast.error(resData.message);
+    } else {
+      toast.success(resData.message);
+    }
   };
 
   return (
@@ -159,6 +203,11 @@ export const AcceptAdoption = () => {
                   <option value="Rejected">Reject</option>
                 </select>
               </tr>
+
+              <div className="AcceptAdoption-Attachment">
+                      <p>Attachment:</p>
+                      <div><input type='file' name='attachment' id='file-input' onChange={(e)=>{Setattachment(e.target.files[0])}}/></div>
+              </div>
 
               <div className='AcceptAdoption-button'>
                 <button onClick={ handleSubmit}>Submit</button>

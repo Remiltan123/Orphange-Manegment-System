@@ -5,6 +5,10 @@ const Adopted = require('../../models/Adoption')
 const Adopters = require('../../models/Adopter')
 const router = express.Router()
 const jwt = require("jsonwebtoken")
+const nodemailer = require("nodemailer")
+const multer = require("multer")
+const fs = require('fs');
+const path = require('path')
 
 
 // Add child
@@ -272,6 +276,72 @@ router.post("/Reject-Request", async (req, res) => {
       console.error("Error updating adoption request:", error);
       res.status(500).json({ success: false, message: "An error  occur please try again" });
     }
+  });
+
+
+  
+  const storage = multer.diskStorage({
+    destination: './upload/images',
+    filename: (req, file, cb) => {
+      cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+    }
+  });
+  
+  const upload = multer({
+    storage: storage,
+    limits: { fileSize: 50 * 1024 * 1024 } // 50MB file size limit
+  });
+  
+  router.post('/Send-replay-mail', upload.single('attachment'), async (req, res) => {
+    const { from, to, subject, text, type } = req.body;
+    const attachment = req.file;
+  
+    if (!from || !to || !subject || !text) {
+      return res.json({ success: false, message: "Empty input fields!" });
+    }
+  
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(from)) {
+      return res.json({ success: false, message: "Invalid email entered!" });
+    }
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(to)) {
+      return res.json({ success: false, message: "Invalid email entered!" });
+    }
+  
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: "orphanagegroup09@gmail.com",
+        pass: "jfhv wioi uoob rcls",
+      }
+    });
+  
+    const mailOptions = {
+      from: from,
+      to: to,
+      subject: subject,
+      text: text,
+      attachments: attachment ? [{ path: attachment.path }] : []
+    };
+  
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        return res.json({ success: false, message: error.message });
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.json({ success: true, message: "Successfully sent " + type + " the mail" });
+  
+        if (attachment) {
+          fs.unlink(attachment.path, (err) => {
+            if (err) {
+              console.error(err);
+            } else {
+              console.log("Deleted attachment");
+            }
+          });
+        }
+      }
+    });
   });
   
 
