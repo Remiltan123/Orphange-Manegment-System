@@ -100,8 +100,8 @@ app.get("/orphanage/:id", async (req, res) => {
         res.json(ReqOrphanage);
     } catch (error) {
         console.error('Error fetching orphanage:', error);
-        res.status(500).json({ success: false, message: "Internal server error" });
-    }
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
 });
 
 
