@@ -53,8 +53,6 @@ app.use("/", AboutChild )
 
 
 
-
-
 // Connect with homepage
 app.get("/",(req,res)=>{
     res.send("App is running")
