@@ -3,7 +3,6 @@ import "./CSS/AdoptionShow.css";
 import adoptType from "../Components/Assets/AdoptType.png";
 import motherimg from "../Components/Assets/Mother.png"
 import { useParams,useNavigate } from 'react-router-dom';
-import { Chatbot } from '../Components/ChatBot/ChatBot';
 
 export const AdoptionShow = () => {
   const [activeStep, setActiveStep] = useState(null);
@@ -182,9 +181,7 @@ export const AdoptionShow = () => {
             <img src={motherimg} alt="" className='Mother-image'/>
         </div>
 
-        <div className='Adoption-Chatbot'>
-          <Chatbot/>
-        </div>
+       
     </div>
   );
 };
