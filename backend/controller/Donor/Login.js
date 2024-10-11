@@ -1,5 +1,10 @@
 const Donors = require('../../models/Donor');
 const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt")
+
+
+
+// NO NEED THIS CODE
 
 const DonorLogin = async (req, res) => {
 
@@ -22,7 +27,7 @@ const DonorLogin = async (req, res) => {
     let Donor = await Donors.findOne({ email });
 
     if (Donor) {
-      const checkpass = password === Donor.password;
+      const checkpass = await bcrypt.compare(password, Donor.password);
 
       if (checkpass) {
         const data = {

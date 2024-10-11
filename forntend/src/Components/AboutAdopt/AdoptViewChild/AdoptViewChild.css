@@ -1,4 +1,11 @@
-
+.AdoptViewChild-maincontainer,.opacity-AdoptViewChild-maincontainer{
+    background-color: #ddd8d8;
+    margin: 0;
+    margin-bottom: -20px; 
+}
+.opacity-AdoptViewChild-maincontainer{
+    opacity: 0.7;
+}
 .child_detials{
     display: flex;
     gap: 20px;
@@ -9,6 +16,8 @@
     border-radius: 100%;
 }
 .child_image{
+    display: flex;
+    flex-direction: column;
     width: 60px;
     height: 60px;
     border-radius: 100%;
@@ -21,14 +30,15 @@
 
 .mainHeading{
     text-align: center;
-    margin-top: 30px;
-    color: rgb(192, 20, 77);
+    padding-top: 15px;
+    color: rgb(232, 6, 232)
 }
 
 .orphanage_name{
     padding-top: 1px;
     margin-top: 20px;
     width: 100%px;
+    
 }
 .orphanage_name h2{
     margin-top: -3px;
@@ -41,7 +51,12 @@
 }
 .orphanage_name h2 span{
     text-transform: uppercase;
-    color: #0e0e0e;
+    color: rgb(229, 76, 76);
+    cursor: pointer;
+    
+}
+.orphanage_name span:hover{
+   color: blue;
 }
 .child_heading_detail p{
     font-weight: 600;
@@ -52,18 +67,20 @@
 }
 
 
-.main_hild_image_galary{
+.main_child_image_gallery{
     display: flex;
     gap: 20px;
     margin-left: 50px;
-    flex-wrap: wrap;
-      
+    flex-wrap: wrap; 
+    width: 100%;  
+    
 }
-.child_image_galary{
+
+.child_image_gallery{
     background-color:rgb(162, 162, 234);
     margin-top: 20px; 
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 350px;
     display: flex; 
     flex-direction: column; 
     align-items: center;
@@ -72,7 +89,7 @@
     position: relative;
 }
 
-.main_hild_image_galary button{
+.main_child_image_gallery button{
     padding: 2px;
     cursor: pointer;
 }
@@ -92,4 +109,35 @@
     background-color: rgb(128, 229, 229);
     font-weight: 600;
 }
+
+.Category-child{
+    background-color: #b1b1b1;
+    margin-left: 50px;
+    margin-right: 140px;
+    
+}
+.Category-child h3{
+    padding: 5px 10px;
+}
+
+.Category-child-button{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+   
+    
+}
+.Child-adopt-button{
+   border: none;
+   background-color:wheat;
+   border-radius: 5px;
+   padding: 10px 20px;
+   margin-top: -5px;
+   width: 100px;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+
+
 

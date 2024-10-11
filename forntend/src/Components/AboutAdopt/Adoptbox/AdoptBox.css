@@ -1,0 +1,60 @@
+.AdoptBox{
+    background-color: white;
+    width: fit-content;
+    padding: 10px 40px;
+    border-radius: 30px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    position: fixed;
+    z-index: 100;
+    left: 290px;
+    top: 180px;
+    border: 2px solid rgb(203, 245, 231);
+}
+.AdoptBox-moredetails{
+    width: 600px;
+}
+.AdoptBox-header{
+    text-transform: uppercase;
+}
+.AdoptBox-click span{
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+}
+.AdoptBox-details tr{
+    display: flex;
+    gap: 10px;
+}
+
+
+.AdoptBox-buttons{
+    display: flex;
+    gap:7px;
+}
+.AdoptBox-YES, .AdoptBox-NO{
+    background-color: blue;
+    color: white;
+    padding: 4px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+
+
+.AdoptBox-YES:hover{
+    background-color: rgb(202, 202, 227);
+}
+.AdoptBox-NO:hover{
+    background-color: rgb(202, 202, 227);
+}
+.AdoptBox-close{
+    background-color: rgb(178, 178, 231);
+    color: white;
+    padding: 4px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+

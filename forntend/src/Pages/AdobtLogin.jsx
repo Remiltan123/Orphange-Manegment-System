@@ -26,7 +26,7 @@ export const AdobtLogin = () => {
     const data = await  Resphonsedata.json();
     if(data.success){
       localStorage.setItem('auth-token', data.token);
-      window.location.replace('/Adobt/ViewChild');
+      window.location.replace(`/Adopt/Show/${data.token}`);
       toast.success(data.message)
     }else{
       toast.error(data.message);
@@ -49,9 +49,9 @@ export const AdobtLogin = () => {
         </div>
 
         <div className='AdobtLogin-body'>
-          <input type="password" />
+         
           <input type="text" placeholder='Email' className='AdobtLogin-body-input' name='email' onChange={HandleChange } />
-          <input type="text" placeholder='Password' className='AdobtLogin-body-input' name='password' onChange={HandleChange }/>
+          <input type="password" placeholder='Password' className='AdobtLogin-body-input' name='password' onChange={HandleChange }/>
 
           { <Link to="/forgotpassword" style={{textDecoration:"none", color: "red"}}><div className='forgot-password'>Forgot password?</div></Link>}
 

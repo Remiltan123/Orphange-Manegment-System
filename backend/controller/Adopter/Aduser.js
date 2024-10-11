@@ -235,7 +235,12 @@ router.post("/Adopterlogin", async (req, res) => {
             
             const isMatch = await bcrypt.compare(password, adopter.password);
             if (isMatch) {
-                res.json({ success: true, message: "Login Successfully"});
+                const token = jwt.sign(
+                    {id:adopter._id},
+                    process.env.KEY,
+                    {expiresIn :"1h"}
+                )
+                res.json({ success: true, token:token, message: "Login Successfully"});
             } else {
                 res.json({ success: false, message: "Invalid password!" });
         }

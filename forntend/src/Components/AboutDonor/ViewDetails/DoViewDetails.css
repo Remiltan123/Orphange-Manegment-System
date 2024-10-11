@@ -85,6 +85,10 @@
     font-size: 17px;
    
 }
+.second-serach-heading{
+    color: #555;
+    font-size: 17px;
+}
 .Serachbar{
     width: 600px;
     border: 1px solid #555;
@@ -106,7 +110,7 @@
     border: none;
     background-color: white;
     margin-left: 15px;
-    font-size: 17px;
+    font-size: 15px;
     appearance: none; 
     margin-top:1px;
     padding-top: -10px;
@@ -147,4 +151,7 @@
 .Orphange-sreach{
     display: flex;
     gap: 10px;
+}
+.second-serach-heading{
+    margin-top: 32px;
 }

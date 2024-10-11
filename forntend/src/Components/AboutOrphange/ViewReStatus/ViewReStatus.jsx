@@ -6,38 +6,49 @@ import { GiveFeedback } from '../GiveFeedback/GiveFeedback';
 import {toast} from "react-toastify"
 
 export const ViewReStatus = () => {
-  const { id } = useParams();
+  const { token,id } = useParams();
   const [details, setDetails] = useState([]);
   const [FeedbackDetails, setFeedbackDetails] = useState({});
   const [show, setShow] = useState(false);
 
   const [verifiedDetails, setVerifiedDetails] = useState([]);
+  const [orphanageId, setOrphanageId] = useState(null);
 
-  useEffect(() => {
-    const fetchDonationStatus = async () => {
-      try {
-        const response = await fetch(`http://localhost:1010/DonetionStatus/${id}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({}),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setDetails(data);
-        } else {
-          console.error('Failed to fetch donation status');
-        }
-      } catch (error) {
-        console.error('Error occurred while fetching donation status:', error);
+  const fetchOrphanage = async () => {
+    try {
+      const response = await fetch(`http://localhost:1010/getorphanage/${token}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch orphanage');
       }
-    };
+      const data = await response.json();
+      setOrphanageId(data.ORData.Oid);
+    } catch (error) {
+      console.error('Error fetching orphanage:', error);
+      toast.error('Error fetching orphanage');
+    }
+  };
 
-    fetchDonationStatus();
-    checkVerification();
-  }, [id]);
+  const fetchDonationStatus = async () => {
+    try {
+      const response = await fetch(`http://localhost:1010/DonetionStatus/${orphanageId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setDetails(data);
+      } else {
+        console.error('Failed to fetch donation status');
+      }
+    } catch (error) {
+      console.error('Error occurred while fetching donation status:', error);
+    }
+  };
+
 
   const handleClick = (detail) => {
     setFeedbackDetails(detail);
@@ -78,7 +89,7 @@ export const ViewReStatus = () => {
 
   const checkVerification = async () => {
     try {
-      const response = await fetch(`http://localhost:1010/FeachVerifications/${id}`, {
+      const response = await fetch(`http://localhost:1010/FeachVerifications/${orphanageId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -93,12 +104,23 @@ export const ViewReStatus = () => {
       toast.error("Failed. Please try again later.");
     }
   }
-  console.log(id)
-  console.log(verifiedDetails)
+
+  useEffect(()=>{
+    fetchOrphanage();
+  },[token])
+
+  useEffect(() => {
+    if(orphanageId){
+      fetchDonationStatus();
+      checkVerification();
+    }
+  }, [orphanageId]);
+
+  
 
   return (
     <>
-      <OrphanageNavbar id={id} />
+      <OrphanageNavbar token={token}/>
       <div className="View_ReDetails-container">
         <div className="View_ReDetails-sub-container">
           <div className="View_ReDetails-heading">

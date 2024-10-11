@@ -95,7 +95,6 @@ export const DoViewDetails = () => {
   };
 
   const SelectPerticular = async (Oname) => {
-
     try {
       const response = await fetch("http://localhost:1010/SerachPerticularOrphange", {
         method: "POST",
@@ -127,30 +126,28 @@ export const DoViewDetails = () => {
           <div className='district-search'>
             <div className='serach-heading'><p>Search district wise Orphanages Requestes</p></div>
             <div className='Serachbar'>
-              <select name="district" id="district"  onChange={(e)=>{ setSelectedDistrict(e.target.value)}}>
+              <select name="district" id="district" onChange={(e) => { setSelectedDistrict(e.target.value) }}>
                 {district.map((district, index) => (
                   <option value={district} key={index}>{district}</option>
                 ))}
               </select>
-              <div className='search-icon' onClick={ handleDistrictWise }>search</div>
+              <div className='search-icon' onClick={handleDistrictWise}>search</div>
             </div>
           </div>
-          
+
           <div className='perticular-orphange'>
-            <div className='serach-heading'><p>Search perticular Orphanages Requestes</p></div>
+            <div className='second-serach-heading'><p>Search perticular Orphanages Requestes</p></div>
             <div className='Serachbar'>
-              <select name="district" id="district"  onChange={(e)=>{ setSelectedDistrict(e.target.value)}}>
-                <option value="">Choose Orphanage</option>
+              <select name="orphanage" id="orphanage" onChange={(e) => { SetperticularOr(e.target.value) }}>
+              <option value="" >Choose Orphanage</option>
                 {DistrictOrphange.map((orphange, index) => (
-                  <option value={orphange.Oname} key={index} onClick={()=>{SetperticularOr(orphange.Oname)}}>{orphange.Oname}</option>
+                  <option value={orphange.Oname} key={index}>{orphange.Oname}</option>
                 ))}
               </select>
-              <div className='search-icon' onClick={HandlePerticular }>search</div>
+              <div className='search-icon' onClick={HandlePerticular}>search</div>
             </div>
           </div>
-
         </div>
-
 
         <table className='table-Details'>
           <thead>
@@ -158,62 +155,61 @@ export const DoViewDetails = () => {
               <th>Orphanage Name</th>
               <th>Purpose</th>
               <th>Description</th>
-              <th>Requested Date</th> 
+              <th>Requested Date</th>
               <th>Goal/Raised</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {state === "District" ?
-            Requests.map((request, index) => (
-              <tr key={index}>
-                <td style={{ color: "blue", fontWeight: 600 }}>{OrphanageDetails[index]?.Oname}</td>
-                <td style={{ color: "blue", fontWeight: 600 }}>{request.purpose}</td>
-                <td>{request.description}</td>
-                <td>{request.date}</td>
-                <td className='amount'>
+              Requests.map((request, index) => (
+                <tr key={index}>
+                  <td style={{ color: "blue", fontWeight: 600 }}>{OrphanageDetails[index]?.Oname}</td>
+                  <td style={{ color: "blue", fontWeight: 600 }}>{request.purpose}</td>
+                  <td>{request.description}</td>
+                  <td>{request.date}</td>
+                  <td className='amount'>
                     <p>
                       <strong style={{ opacity: 0.7 }}>Raised:</strong> <span style={{ color: "#ff9900", fontWeight: "bold" }}>${request.raised_amount.toLocaleString()}</span>
                       <strong style={{ opacity: 0.7 }}> Goal:</strong> <span style={{ fontWeight: "bold", color: "green" }}> ${request.expect_amount.toLocaleString()}</span>
                     </p>
                     <div className="ViewDetails-progress-bar">
-                      <div className="ViewDetails-progress" style={{ width: `${(request.raised_amount /request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
+                      <div className="ViewDetails-progress" style={{ width: `${(request.raised_amount / request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
                     </div>
-                </td>
-                
-                <td>
-                  <div className='buttons'>
-                    <button className='Accept-button' onClick={()=>{handleClick(request,OrphanageDetails[index])}} >Accept</button>
-                  </div>
-                </td>
-              </tr>
-            ))
+                  </td>
 
-            :NewRequests.map((request, index) => (
-              <tr key={index}>
-                <td style={{ color: "blue", fontWeight: 600 }}>{OrphanageDetails[index]?.Oname}</td>
-                <td style={{ color: "blue", fontWeight: 600 }}>{request.purpose}</td>
-                <td>{request.description}</td>
-                <td>{request.date}</td>
-                <td className='amount'>
+                  <td>
+                    <div className='buttons'>
+                      <button className='Accept-button' onClick={() => { handleClick(request, OrphanageDetails[index]) }} >Accept</button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+
+              : NewRequests.map((request, index) => (
+                <tr key={index}>
+                  <td style={{ color: "blue", fontWeight: 600 }}>{perticularOr}</td>
+                  <td style={{ color: "blue", fontWeight: 600 }}>{request.purpose}</td>
+                  <td>{request.description}</td>
+                  <td>{request.date}</td>
+                  <td className='amount'>
                     <p>
                       <strong style={{ opacity: 0.7 }}>Raised:</strong> <span style={{ color: "#ff9900", fontWeight: "bold" }}>${request.expect_amount.toLocaleString()}</span>
                       <strong style={{ opacity: 0.7 }}> Goal:</strong> <span style={{ fontWeight: "bold", color: "green" }}> ${request.expect_amount.toLocaleString()}</span>
                     </p>
                     <div className="ViewDetails-progress-bar">
-                      <div className="ViewDetails-progress" style={{ width: `${(request.expect_amount /request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
+                      <div className="ViewDetails-progress" style={{ width: `${(request.raised_amount / request.expect_amount) * 100}%`, backgroundColor: '#ff9900' }}></div>
                     </div>
-                </td>
-                
-                <td>
-                  <div className='buttons'>
-                    <button className='Accept-button' onClick={()=>{handleClick(request,OrphanageDetails[index])}} >Accept</button>
-                  </div>
-                </td>
-              </tr>
-            ))
-          
-          }
+                  </td>
+
+                  <td>
+                    <div className='buttons'>
+                      <button className='Accept-button' onClick={() => { handleClick(request, { Oname: perticularOr }) }} >Accept</button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>

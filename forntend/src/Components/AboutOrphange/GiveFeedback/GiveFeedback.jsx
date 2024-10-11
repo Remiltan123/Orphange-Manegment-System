@@ -5,32 +5,35 @@ import { toast } from 'react-toastify';
 
 export const GiveFeedback = ({ Detials, show }) => {
 
-  const { id } = useParams();
+  const { token } = useParams();
   const [orphanage, setOrphanage] = useState({});
   const [Show, Setshow] = useState(show);
-
-  useEffect(() => {
-    const fetchOrphanage = async () => {
-      try {
-        const response = await fetch(`http://localhost:1010/orphanage/${id}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch orphanage');
-        }
-        const data = await response.json();
-        setOrphanage(data);
-      } catch (error) {
-        console.error('Error fetching orphanage:', error);
-      }
-    };
-    fetchOrphanage();
-  }, [id]);
-
   const [Feedbackdetials, Setdetials] = useState({
     Donor_id: Detials.Do_id,
     DO_name: Detials.Do_name,
     purpose: Detials.purpose,
     Donated_Date: Detials.Do_Date,
+    OR_name:""
   });
+
+  useEffect(() => {
+    const fetchOrphanage = async () => {
+      try {
+        const response = await fetch(`http://localhost:1010/getorphanage/${token}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch orphanage');
+        }
+        const data = await response.json();
+        setOrphanage(data.ORData);
+        Setdetials(d=>({...d, OR_name: data.ORData.Oname}));
+
+      } catch (error) {
+        console.error('Error fetching orphanage:', error);
+      }
+    };
+    fetchOrphanage();
+  }, []);
+
 
   const Handleclick = (e) => {
     Setdetials({ ...Feedbackdetials, [e.target.name]: e.target.value });
@@ -38,15 +41,11 @@ export const GiveFeedback = ({ Detials, show }) => {
 
   const AddFeedback = async () => {
     try {
-      if (!Feedbackdetials.OR_name || !Feedbackdetials.feedback) {
+      if ( !Feedbackdetials.feedback) {
         toast.error("Please provide all details.");
         return;
       }
-      if (orphanage.Oname !== Feedbackdetials.OR_name) {
-        toast.error("Incorrect orphanage name. Please enter the correct name.");
-        return;
-      }
-
+     
       const Respones = await fetch("http://localhost:1010/GiveFeedBack", {
         method: "post",
         headers: {
@@ -67,7 +66,6 @@ export const GiveFeedback = ({ Detials, show }) => {
   }
 
   
-
   return (
     <>
       {Show && (
@@ -96,7 +94,7 @@ export const GiveFeedback = ({ Detials, show }) => {
                   </tr>
                   <tr>
                     <td>Orphanage Name:</td>
-                    <td><input type="text"  onChange={Handleclick} name='OR_name' /></td>
+                    <td><input type="text"  value={orphanage.Oname} placeholder={orphanage.Oname} name='OR_name' /></td>
                   </tr>
                   <tr>
                     <td>Feedback:</td>

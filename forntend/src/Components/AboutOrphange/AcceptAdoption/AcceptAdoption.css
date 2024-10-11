@@ -74,6 +74,8 @@
     background-color: greenyellow;
     padding: 3px 50px;
     font-size: 16px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 3px;
 }
 
 .child-registerid input{
@@ -84,4 +86,27 @@
 }
 .AcceptAdoption-update-details select{
     margin-left: -3px;
+}
+.AcceptAdoption-Attachment{
+    display: flex;
+    flex-direction: column;
+    gap: -10px;
+    margin-bottom: 10px;
+    margin-top: -30px;
+    padding-bottom: 2px;
+    
+}
+
+.AcceptAdoption-Attachment p{
+    font-weight: bold;
+}
+.AcceptAdoption-Attachment div{
+    margin-top: -15px;
+    background-color: white;
+    padding-left: 10px;
+    width: 240px;
+    border: 1px solid #939191;
+    border-radius: 5px;
+    margin-right: 2px;
+    padding-bottom: 3px;
 }
