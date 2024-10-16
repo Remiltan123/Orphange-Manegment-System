@@ -69,6 +69,31 @@ export const Chatbot = () => {
                             </div>
                         )}
 
+                        {/* Adoption */}
+                        {options === "Adoption" && showAdoptionQuestions && !selectedQuestion && (
+                            <div className='chat-Adoption-container'>
+                                <p className='chatin'>Adoption</p>
+                                <p className='chatout'>What would you like to know?</p>
+                                <ul className='chat-option'>
+                                    <li className='options' onClick={() => setSelectedQuestion('How to adopt?')}>How to adopt?</li>
+                                </ul>
+                            </div>
+                        )}
+
+                        {options === "Adoption" && selectedQuestion && (
+                            <div className='answer-section'>
+                                <p className='chatin'>Adoption</p>
+                                <p className='chatout'>What would you like to know?</p>
+                                {selectedQuestion === 'How to adopt?' && (
+                                    <div>
+                                        <p className='chatin'>How to adopt?</p>
+                                        <p className='chatout'>You can adopt by following legal procedures designed to ensure the child's safety and well-being. The process begins with prospective parents submitting an application to the relevant adoption agency or government body, providing personal, financial, and background details. A thorough evaluation, including home studies and interviews, assesses the applicants' readiness to provide a stable, loving home.</p>
+                                        <p className='chatout'>Need more help? You can click the start over button.</p>
+                                    </div>
+                                )}
+                                
+                            </div>
+                        )}
                        
 
 
