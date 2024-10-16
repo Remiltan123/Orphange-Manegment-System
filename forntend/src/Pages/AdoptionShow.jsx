@@ -3,6 +3,7 @@ import "./CSS/AdoptionShow.css";
 import adoptType from "../Components/Assets/AdoptType.png";
 import motherimg from "../Components/Assets/Mother.png"
 import { useParams,useNavigate } from 'react-router-dom';
+import { Chatbot } from '../Components/Chatbot/Chatbot';
 
 export const AdoptionShow = () => {
   const [activeStep, setActiveStep] = useState(null);
@@ -180,6 +181,9 @@ export const AdoptionShow = () => {
             <button className='AbleTO-Adobt-button' onClick={()=>{ClickHandle()}}>View Childs ---- </button>
             <img src={motherimg} alt="" className='Mother-image'/>
         </div>
+        <div className='orphanage-chatbot'>
+        <Chatbot/>
+      </div>
     </div>
   );
 };

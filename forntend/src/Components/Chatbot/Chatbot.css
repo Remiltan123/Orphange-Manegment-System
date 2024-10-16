@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins: wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #E3F2FD;
+}
+
+.chatbot-toggler {
+    position: fixed;
+    right: 40px;
+    bottom: 35px;
+    height: 60px;
+    width: 60px;
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    background: #724ae8;
+    border-radius: 50%;
+    transition: all 0.1s ease;
+}
+
+.chaticonopen {
+    height: 80px;
+    width: 28px;
+    position: absolute;
+}
+
+.chaticonclose {
+    height: 80px;
+    width: 38px;
+    position: absolute;
+}
+
+.chatbot-label {
+    margin-right: 165px;
+    background: #724ae8;
+    padding: 6px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: larger;
+    font-weight: bold;
+    color: #fff;
+}
+
+.Chatbot-container {
+    position: fixed;
+    right: 40px;
+    bottom: 110px;
+    width: 720px;
+    height: 1000px;
+    transform: scale(0.5);
+    overflow: hidden;
+    background: #fff;
+    border-radius: 15px;
+    transform-origin: bottom right;
+    box-shadow: 0 0 128px rgba(0, 0, 0, 0.1),
+        0 32px 64px -48px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+}
+
+.head-container {
+    background: #724ae8;
+    padding: 15px 0;
+    text-align: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.head-container h2 {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
+.body-container {
+    overflow-y: auto;
+    max-height: 760px;
+    padding: 30px 20px 70px;
+    display: flex;
+    overflow-y: auto;
+    flex-grow: 1;
+    flex-direction: column;
+    scroll-behavior: smooth;
+}
+
+.chatout {
+    width: 500px;
+    font-size: 30px;
+    margin: 20px 0px 20px 0;
+    padding: 15px;
+    color: #000;
+    background: #ebe6e6;
+    border-radius: 15px 15px 15px 0;
+}
+
+.chatin {
+    margin-left: 420px;
+    width: 260px;
+    font-size: 30px;
+    padding: 15px;
+    color: #000;
+    background: #a4c0ed;
+    border-radius: 15px 15px 0px 15px;
+
+}
+
