@@ -110,8 +110,8 @@
 }
 .Child-view-div {
     position: fixed;
-    top: 100px;
-    right: 15px;
+    top: 110px;
+    left: 40px;
     z-index: 1000;
     background-color: rgb(26, 227, 26);
     padding: 12px 20px;

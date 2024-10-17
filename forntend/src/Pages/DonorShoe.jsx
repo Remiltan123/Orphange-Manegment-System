@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "./CSS/Donorshow.css";
 import { useNavigate, useParams } from 'react-router-dom';
 import Chart from 'chart.js/auto';
+import { Chatbot } from '../Components/Chatbot/Chatbot';
 
 export const DonorShoe = () => {
   const navigate = useNavigate();
@@ -150,6 +151,11 @@ export const DonorShoe = () => {
           </ul>
         </div>
       </div>
+
+      <div className='orphanage-chatbot'>
+        <Chatbot/>
+      </div>
+
     </div>
   );
 };
