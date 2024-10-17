@@ -6,8 +6,8 @@ body {
 
 .chatbot-toggler {
     position: fixed;
-    right: 40px;
-    bottom: 35px;
+    right: 20px;
+    bottom: 18px;
     height: 60px;
     width: 60px;
     color: #fff;
@@ -20,6 +20,12 @@ body {
     background: #724ae8;
     border-radius: 50%;
     transition: all 0.1s ease;
+}
+
+.chatbot-toggler:hover,
+.chatbot-label:hover {
+    color: #724ae8;
+    background:  #ffffffee;
 }
 
 .chaticonopen {
@@ -35,21 +41,24 @@ body {
 }
 
 .chatbot-label {
-    margin-right: 165px;
+    margin-right: 169px;
     background: #724ae8;
-    padding: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
     text-align: center;
     border-radius: 10px;
-    font-size: larger;
+    font-size: 25px;
     font-weight: bold;
     color: #fff;
 }
 
 .Chatbot-container {
     position: fixed;
-    right: 40px;
-    bottom: 110px;
-    width: 720px;
+    right: 20px;
+    bottom: 80px;
+    width: 750px;
     height: 1000px;
     transform: scale(0.5);
     overflow: hidden;
@@ -63,7 +72,7 @@ body {
 
 .head-container {
     background: #724ae8;
-    padding: 15px 0;
+    padding: 1px;
     text-align: center;
     position: relative;
     flex-shrink: 0;
@@ -77,8 +86,8 @@ body {
 
 .body-container {
     overflow-y: auto;
-    max-height: 760px;
-    padding: 30px 20px 70px;
+    max-height: 718px;
+    padding: 0px 20px 0px 20px;
     display: flex;
     overflow-y: auto;
     flex-grow: 1;
@@ -104,7 +113,6 @@ body {
     color: #000;
     background: #a4c0ed;
     border-radius: 15px 15px 0px 15px;
-
 }
 
 .chat-option {
@@ -140,7 +148,7 @@ body {
     background: #fc9d9b;
     position: fixed;
     right: 30px;
-    bottom: 10px;
+    bottom: 15px;
     padding: 20px;
     font-size: 28px;
     border-radius: 20px;
@@ -153,17 +161,17 @@ body {
 }
 
 .chat-input p {
-    height: 80px;
     width: 720px;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-left: 20px;
     position: fixed;
     float: left;
-    bottom: 30px;
+    bottom: 20px;
     font-size: 2rem;
-    opacity: 0.5;
+    opacity: 0.6;
     resize: none;
     border: none;
     border-top: 8px solid #7e7b7b;
     flex-shrink: 0;
 }
+
