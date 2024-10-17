@@ -181,9 +181,11 @@ export const AdoptionShow = () => {
             <button className='AbleTO-Adobt-button' onClick={()=>{ClickHandle()}}>View Childs ---- </button>
             <img src={motherimg} alt="" className='Mother-image'/>
         </div>
+
         <div className='orphanage-chatbot'>
         <Chatbot/>
       </div>
+      
     </div>
   );
 };

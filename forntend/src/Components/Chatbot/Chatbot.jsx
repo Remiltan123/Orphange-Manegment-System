@@ -129,7 +129,62 @@ export const Chatbot = () => {
                         )}
 
                         {/* Donation */}
+                        {options === "Donation" && showDonationQuestions && !selectedQuestion && (
+                            <div className='chat-Donation-container'>
+                                <p className='chatin'>Donation</p>
+                                <p className='chatout'>What would you like to know?</p>
+                                <ul className='chat-option'>
+                                    <li className='options' onClick={() => setSelectedQuestion('How to donate?')}>How to donate?</li>
+                                    <li className='options' onClick={() => setSelectedQuestion('What items are needed?')}>What items are needed?</li>
+                                    <li className='options' onClick={() => setSelectedQuestion('Can I donate money?')}>Can I donate money?</li>
+                                    <li className='options' onClick={() => setSelectedQuestion('Is my donation tax-deductible?')}>Is my donation tax-deductible?</li>
+                                </ul>
+                            </div>
+                        )}
 
+                        {options === "Donation" && selectedQuestion && (
+                            <div className='answer-section'>
+                                <p className='chatin'>Donation</p>
+                                <p className='chatout'>What would you like to know?</p>
+                                {selectedQuestion === 'How to donate?' && (
+                                    <div>
+                                        <p className='chatin'>How to donate?</p>
+                                        <p className='chatout'>You can donate by visiting our donation page, where you’ll find various options for contributing, including one-time or recurring donations. The process is simple and secure, allowing you to make a meaningful impact with ease.</p>
+                                        <p className='chatout'>Alternatively, you can contact us directly if you prefer a more personalized approach or have specific questions about how your donation will be used. Our team is happy to assist and provide more information on how you can support our cause.</p>
+                                        <p className='chatout'>Every contribution, big or small, makes a difference in helping us achieve our mission. Your generosity allows us to continue providing essential services and support to those in need.</p>
+                                        <p className='chatout'>Need more help? You can click the start over button.</p>
+                                    </div>
+                                )}
+                                {selectedQuestion === 'What items are needed?' && (
+                                    <div>
+                                        <p className='chatin'>What items are needed?</p>
+                                        <p className='chatout'>We are in need of clothing, school supplies, and hygiene products for the children. These essential items help ensure their well-being, comfort, and ability to focus on their education.</p>
+                                        <p className='chatout'>Donating clothing of various sizes ensures that the children have proper attire for daily activities and school. New or gently used items are welcome.</p>
+                                        <p className='chatout'>School supplies, such as notebooks, pens, and backpacks, are critical in supporting their educational journey. Your contributions help create a more engaging and productive learning environment.</p>
+                                        <p className='chatout'>Hygiene products like soap, toothpaste, and shampoo are vital for maintaining the children’s health and self-confidence. Providing these essentials helps them thrive in a clean, supportive environment.</p>
+                                        <p className='chatout'>Need more help? You can click the start over button.</p>
+                                    </div>
+                                )}
+                                {selectedQuestion === 'Can I donate money?' && (
+                                    <div>
+                                        <p className='chatin'>Can I donate money?</p>
+                                        <p className='chatout'>Yes, monetary donations are accepted through our secure payment portal. These contributions provide us with the flexibility to address immediate and ongoing needs, ensuring that the children receive the best possible care.</p>
+                                        <p className='chatout'>Your financial support helps fund essential services, such as education, healthcare, and nutritious meals for the children. It also allows us to purchase items like clothing, school supplies, and hygiene products as needed.</p>
+                                        <p className='chatout'>By donating money, you can make a direct and meaningful impact on the lives of the children we support. Every donation, no matter the amount, helps us continue our mission of providing a safe and nurturing environment.</p>
+                                        <p className='chatout'>Need more help? You can click the start over button.</p>
+                                    </div>
+                                )}
+                                {selectedQuestion === 'Is my donation tax-deductible?' && (
+                                    <div>
+                                        <p className='chatin'>Is my donation tax-deductible?</p>
+                                        <p className='chatout'>Yes, your donation may be tax-deductible, depending on the organization's status and the laws in your country. Most nonprofit organizations are recognized as tax-exempt under IRS regulations, meaning that contributions made to them can qualify for tax deductions.</p>
+                                        <p className='chatout'>After making your donation, you will typically receive a receipt or acknowledgment letter. Keep this documentation for your records, as it will be necessary when filing your taxes to claim the deduction.</p>
+                                        <p className='chatout'>If you have specific questions about the tax implications of your donation, consider consulting with a tax professional. They can provide personalized advice based on your financial situation and local tax laws.</p>
+                                        <p className='chatout'>Need more help? You can click the start over button.</p>
+                                    </div>
+                                )}
+                            </div>
+                        )}
 
                     </div>
 
