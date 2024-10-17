@@ -153,6 +153,7 @@ body {
     font-size: 28px;
     border-radius: 20px;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .Start-over:hover {
