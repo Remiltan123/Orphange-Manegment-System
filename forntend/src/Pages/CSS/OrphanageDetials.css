@@ -1,63 +1,158 @@
 .orphanage-details-container {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1000px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .orphanage-image {
-    width: 100%;
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
-.header h3 {
-    font-size: 24px;
-    color: #333;
+.about-orphanage h3 {
+  font-size: 24px;
+  color: #333;
 }
 
 .about-orphanage {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.contact-us, .about-children {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+.contact-us,
+.about-children {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.contact-us h1, .about-children h1 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #007bff;
+.contact-us h1,
+.about-children h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #007bff;
 }
 
 .info {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .info p {
-    font-size: 16px;
-    color: #555;
+  font-size: 16px;
+  color: #555;
 }
 
 .info span {
-    font-weight: bold;
-    color: #333;
+  font-weight: bold;
+  color: #333;
+}
+
+.intro-details h1 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 45px;
+}
+
+.intro-details p {
+  text-align: center;
+  font-weight: 100;
+  font-size: 20px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.dash-line {
+  border: none;
+  border-bottom: 4px solid orange;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-bottom: 30px;
+}
+
+.donate-button {
+  text-align: center;
+  margin: 30px;
+}
+
+.donate-button button {
+  padding: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+  background-color: #ff8c00;
+  border-radius: 15px;
+  border-color: #ff8c00;
+  font-weight: 500;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.donate-button button:hover {
+  background-color: #ff4500;
+  border-color: #ff4500;
+  color: white;
+  font-size: 25px;
+}
+
+.donation-help {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: AliceBlue;
+  padding-top: 1px;
+  padding-bottom: 50px;
+}
+
+.donation-help h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.orphanage-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.orphanage-container div {
+  max-width: 300px;
+  text-align: center;
+  border: 2px solid black;
+  transition: all 0.3s;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.orphanage-container div:hover {
+  background-color: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.orphanage-container div h3 {
+  margin-top: -30px;
+  font-size: 25px;
+}
+
+.orphanage-container div p {
+    font-size: 18px;
 }
