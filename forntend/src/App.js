@@ -33,6 +33,7 @@ import { SeeRequested } from './Components/AboutOrphange/SeeRequested/SeeRequest
 import { Forgotpassword } from './Components/AboutDonor/forgotpassword/forgotpassword.jsx';
 import { ResetPassword } from './Components/AboutDonor/ResetPassword/ResetPassword.jsx';
 import { ArrgentAdminpanal } from './Components/AboutOrphange/ArrgentAdminpanal/ArrgentAdminpanal.jsx';
+
 import { WantsDonetion } from './Components/WantsDonetion/WantsDonetion.js';
 import { OrphanageDetials } from './Pages/OrphanageDetials.jsx';
 import { AdoptionShow } from './Pages/AdoptionShow.jsx';
@@ -57,6 +58,7 @@ function App() {
         <Route path='/' element={<><Navbar/> <HomePage/></>} ></Route>
         <Route path="/ArrengtDonetion" element={<><Navbar/> <WantsDonetion/></>} />
         
+        
         <Route path='/OrphanageSelect' element={<OrphanageSelect/>}></Route>
         <Route path='/OrphanageLogin/:id' element={<OrpanageLogin/>}></Route>
         <Route path='/Orphanage/:token' element={<OrphanageShow/>} />
@@ -70,7 +72,6 @@ function App() {
           <Route path='/Orphanage/AcceptAdoption/:token' element={<> <AcceptAdoption /></>} />
 
           
-        
 
         <Route path='/DonerLogin' element={<DonerLogin/>}></Route>
           <Route path='/Donor/:token' element={<DonorShoe/>} />
