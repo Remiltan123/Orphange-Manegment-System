@@ -39,7 +39,7 @@ import { OrphanageDetials } from './Pages/OrphanageDetials.jsx';
 import { AdoptionShow } from './Pages/AdoptionShow.jsx';
 import { ORdetails } from './Components/AboutAdopt/MoreaboutOnechild/ORdetails.jsx';
 
-
+import { WantsHomeDisplay } from './Components/WantsHomeDisplay/WantsHomeDisplay.jsx';
 
 
 
@@ -58,7 +58,9 @@ function App() {
         <Route path='/' element={<><Navbar/> <HomePage/></>} ></Route>
         <Route path="/ArrengtDonetion" element={<><Navbar/> <WantsDonetion/></>} />
         
-        
+        <Route path='/WantsHomeDisplay' element={<WantsHomeDisplay />} />
+
+
         <Route path='/OrphanageSelect' element={<OrphanageSelect/>}></Route>
         <Route path='/OrphanageLogin/:id' element={<OrpanageLogin/>}></Route>
         <Route path='/Orphanage/:token' element={<OrphanageShow/>} />
