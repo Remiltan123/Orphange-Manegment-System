@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./WantsHomeDisplay.css";
 
+
 export const WantsHomeDisplay = () => {
   const [Wants, SetWants] = useState([]);
   const [Orphanages, setOrphanages] = useState([]);

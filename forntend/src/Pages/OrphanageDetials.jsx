@@ -11,7 +11,7 @@ export const OrphanageDetials = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/ArrengtDonetion');
+        navigate('/WantsHomeDisplay');
     };
 
 
@@ -113,7 +113,7 @@ export const OrphanageDetials = () => {
                     </div>
                 </div>
             </div>
-            <h1 style={{ textAlign: 'center', fontSize: '50px'}}>About us</h1>
+            <h1 style={{ textAlign: 'center', fontSize: '50px' }}>About us</h1>
             <div className="dash-line"></div>
             <div className='about-orphanage'>
                 <div className='contact-us'>
